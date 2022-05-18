@@ -1,0 +1,26 @@
+/**
+ * ManagerListContract contract.
+ */
+syntax = "proto3";
+
+package ManagerListContract;
+
+import public "aelf/options.proto";
+import public "aelf/core.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+option csharp_namespace = "AElf.Contracts.ManagerListContract";
+
+service ManagerListContract {
+    
+    option (aelf.csharp_state) = "AElf.Contracts.ManagerListContract.ManagerListContractState";
+
+
+    rpc AddManager(aelf.Address) returns (google.protobuf.Empty) {
+    }
+
+    rpc RemoveManager(aelf.Address) returns (google.protobuf.Empty) {
+    }
+    
+}

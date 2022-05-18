@@ -1,0 +1,17 @@
+/**
+ * Manager List contract.
+ *
+ */
+syntax = "proto3";
+
+package ManagerListImpl;
+
+import "manager_list_contract.proto";
+
+option csharp_namespace = "AElf.Contracts.ManagerListContract";
+
+service ManagerListContractImpl {
+
+  option (aelf.csharp_state) = "AElf.Contracts.ManagerListContract.ManagerListContractState";
+  option (aelf.base) = "manager_list_contract.proto";
+}
