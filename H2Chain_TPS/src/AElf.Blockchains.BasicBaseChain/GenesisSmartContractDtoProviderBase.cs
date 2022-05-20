@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using AElf.Kernel.SmartContract.Application;
 using AElf.OS.Node.Application;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace AElf.Blockchains.BasicBaseChain
 {
@@ -10,6 +12,8 @@ namespace AElf.Blockchains.BasicBaseChain
     /// </summary>
     public abstract class GenesisSmartContractDtoProviderBase : IGenesisSmartContractDtoProvider
     {
+        public ILogger<GenesisSmartContractDtoProviderBase> Logger { get; set; }
+
         protected readonly IContractDeploymentListProvider ContractDeploymentListProvider;
         protected readonly IEnumerable<IContractInitializationProvider> ContractInitializationProviders;
 
@@ -18,6 +22,7 @@ namespace AElf.Blockchains.BasicBaseChain
         {
             ContractDeploymentListProvider = contractDeploymentListProvider;
             ContractInitializationProviders = contractInitializationProviders;
+            Logger = NullLogger<GenesisSmartContractDtoProviderBase>.Instance;
         }
 
         // TODO: Currently contract deployment logic are same for ContractTestBase, need to fix sooner or later.
@@ -38,8 +43,10 @@ namespace AElf.Blockchains.BasicBaseChain
                         SystemSmartContractName = p.SystemSmartContractName,
                         ContractInitializationMethodCallList = new List<ContractInitializationMethodCall>()
                     };
+                    // Logger.LogDebug("###" + p.SystemSmartContractName);
                     foreach (var method in methodList)
                     {
+                        
                         genesisSmartContractDto.AddGenesisTransactionMethodCall(method);
                     }
 

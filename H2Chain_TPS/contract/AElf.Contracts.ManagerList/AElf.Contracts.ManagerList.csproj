@@ -3,10 +3,11 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageId>AElf.Contracts.ManagerListContract</PackageId>
+        <PackageId>AElf.Contracts.ManagerList</PackageId>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Description>ManagerListContract is a contract that enables the creation of organizations and approvals. The created 
             proposals can be voted for and eventually released.</Description>
+        <RootNamespace>AElf.Contracts.ManagerList</RootNamespace>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">

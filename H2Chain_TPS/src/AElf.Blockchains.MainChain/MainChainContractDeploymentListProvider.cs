@@ -7,6 +7,7 @@ using AElf.Kernel.Consensus;
 using AElf.Kernel.Proposal;
 using AElf.Kernel.SmartContract.Application;
 using AElf.Kernel.Token;
+using AElf.Kernel.ManagerList;
 using AElf.Types;
 
 namespace AElf.Blockchains.MainChain
@@ -31,6 +32,7 @@ namespace AElf.Blockchains.MainChain
                 TokenConverterSmartContractAddressNameProvider.Name,
                 TokenHolderSmartContractAddressNameProvider.Name,
                 EconomicSmartContractAddressNameProvider.Name,
+                ManagerListSmartContractAddressNameProvider.Name,
             };
         }
     }

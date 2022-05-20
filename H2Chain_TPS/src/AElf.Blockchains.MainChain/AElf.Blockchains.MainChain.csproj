@@ -10,6 +10,7 @@
         <ProjectReference Include="..\AElf.Blockchains.BasicBaseChain\AElf.Blockchains.BasicBaseChain.csproj" />
         <ProjectReference Include="..\AElf.ContractDeployer\AElf.ContractDeployer.csproj" />
         <ProjectReference Include="..\AElf.Kernel.Token\AElf.Kernel.Token.csproj" />
+        <ProjectReference Include="..\AElf.Kernel.ManagerList\AElf.Kernel.ManagerList.csproj" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\contract\AElf.Contracts.Configuration\AElf.Contracts.Configuration.csproj">
@@ -78,6 +79,11 @@
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </ProjectReference>
         <ProjectReference Include="..\..\contract\AElf.Contracts.TokenHolder\AElf.Contracts.TokenHolder.csproj">
+            <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+            <OutputItemType>Contract</OutputItemType>
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </ProjectReference>
+        <ProjectReference Include="..\..\contract\AElf.Contracts.ManagerList\AElf.Contracts.ManagerList.csproj">
             <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
             <OutputItemType>Contract</OutputItemType>
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -151,6 +157,9 @@
         </ContractStub>
         <ContractStub Include="..\..\protobuf\configuration_contract.proto">
             <Link>Protobuf\Proto\configuration_contract.proto</Link>
+        </ContractStub>
+        <ContractStub Include="..\..\protobuf\manager_list_contract.proto">
+            <Link>Protobuf\Proto\manager_list_contract.proto</Link>
         </ContractStub>
     </ItemGroup>
 </Project>

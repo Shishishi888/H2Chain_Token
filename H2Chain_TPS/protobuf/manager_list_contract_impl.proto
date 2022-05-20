@@ -8,10 +8,10 @@ package ManagerListImpl;
 
 import "manager_list_contract.proto";
 
-option csharp_namespace = "AElf.Contracts.ManagerListContract";
+option csharp_namespace = "AElf.Contracts.ManagerList";
 
 service ManagerListContractImpl {
 
-  option (aelf.csharp_state) = "AElf.Contracts.ManagerListContract.ManagerListContractState";
+  option (aelf.csharp_state) = "AElf.Contracts.ManagerList.ManagerListState";
   option (aelf.base) = "manager_list_contract.proto";
 }

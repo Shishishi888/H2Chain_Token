@@ -14,6 +14,7 @@ using AElf.Kernel.SmartContract.ExecutionPluginForMethodFee;
 using AElf.Kernel.SmartContract.ExecutionPluginForResourceFee;
 using AElf.Kernel.SmartContract.Parallel;
 using AElf.Kernel.Token;
+using AElf.Kernel.ManagerList;
 using AElf.Modularity;
 using AElf.OS;
 using AElf.OS.Network.Grpc;
@@ -49,7 +50,8 @@ namespace AElf.Blockchains.BasicBaseChain
 
         typeof(GovernmentSystemAElfModule),
         typeof(EconomicSystemAElfModule),
-
+        typeof(ManagerListKernelAElfModule),
+        
         //web api module
         typeof(WebWebAppAElfModule),
         typeof(ParallelExecutionModule),

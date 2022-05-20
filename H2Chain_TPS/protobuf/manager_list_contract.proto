@@ -10,11 +10,11 @@ import public "aelf/core.proto";
 import "google/protobuf/empty.proto";
 import "google/protobuf/wrappers.proto";
 
-option csharp_namespace = "AElf.Contracts.ManagerListContract";
+option csharp_namespace = "AElf.Contracts.ManagerList";
 
 service ManagerListContract {
     
-    option (aelf.csharp_state) = "AElf.Contracts.ManagerListContract.ManagerListContractState";
+    option (aelf.csharp_state) = "AElf.Contracts.ManagerList.ManagerListState";
 
 
     rpc AddManager(aelf.Address) returns (google.protobuf.Empty) {
@@ -22,5 +22,7 @@ service ManagerListContract {
 
     rpc RemoveManager(aelf.Address) returns (google.protobuf.Empty) {
     }
-    
+
+    rpc TestMySystemContract(google.protobuf.Empty) returns (google.protobuf.StringValue) {
+    }
 }

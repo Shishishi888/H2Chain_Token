@@ -6,9 +6,9 @@ using Google.Protobuf.WellKnownTypes;
  * Author: ShiYang WeiHanWang
  * Date: 2022.05.17
  */
-namespace AElf.Contracts.ManagerListContract
+namespace AElf.Contracts.ManagerList
 {
-    public  class ManagerListContractContract : ManagerListContractImplContainer.ManagerListContractImplBase
+    public  class ManagerListContract : ManagerListContractImplContainer.ManagerListContractImplBase
     {
         #region View
         
@@ -50,6 +50,15 @@ namespace AElf.Contracts.ManagerListContract
                 };
             }
             return new Empty();
+        }
+        
+        public override StringValue TestMySystemContract(Empty empty)
+        {
+            
+            return new StringValue
+            {
+                Value = "success"
+            };
         }
 
         #endregion view
