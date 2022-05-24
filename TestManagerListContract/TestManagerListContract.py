@@ -1,5 +1,6 @@
 from aelf import AElf
 from google.protobuf.empty_pb2 import Empty
+from google.protobuf.wrappers_pb2 import StringValue
 
 url = 'http://127.0.0.1:8000'
 aelf = AElf(url)
@@ -27,3 +28,6 @@ aelf.sign_transaction(private_key, transaction)
 result = aelf.execute_transaction(transaction.SerializeToString().hex())
 
 print(result)
+ret = StringValue()
+ret.ParseFromString(bytes.fromhex(result.decode()))
+print(ret.value)
