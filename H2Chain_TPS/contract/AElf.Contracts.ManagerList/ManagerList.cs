@@ -1,5 +1,6 @@
 using AElf.Types;
 using Google.Protobuf.WellKnownTypes;
+// using Microsoft.Extensions.Logging;
 
 /*
  * ManagerListContract
@@ -10,30 +11,37 @@ namespace AElf.Contracts.ManagerList
 {
     public  class ManagerListContract : ManagerListContractImplContainer.ManagerListContractImplBase
     {
-
+        // private ILogger<ManagerListContract> Logger { get; set; }
+        private Address _superAdminAddress;
+        
         #region Action
 
         public override Empty Initialize(Empty input)
         {
-            Address superAdmin = Address.FromBase58("2tEkpoyCFAWhTVZGageFpm4LfdFwKQcK2SUaGWrdxM6FGQL836");
-            State.Manager_Base[superAdmin] = new BoolValue { Value = true };
+            _superAdminAddress = Address.FromBase58("y35saYSrfXtQXKWodZ2XEBA2wCdbC21YKzFHxwLhZovgsX4xn");
+            State.Manager_Base[_superAdminAddress] = new BoolValue { Value = true };
             return new Empty();
         }
+        
         /**
          * Add a manager to manager list.
          */
-        public override  Empty AddManager(Address address)
+        public override  Empty AddManager(StringValue walletAddress)
         {
-        
-            // 1. validate address
-            var isRegistered = State.Manager_Base[Context.Sender].Value;
-              Assert(isRegistered, "invalid sender!");
-              
-              // 2. add a mananger to manager list
-              State.Manager_Base[address] = new BoolValue
-              {
-                  Value = true
-              };
+            Address address = Address.FromBase58(walletAddress.Value);
+
+            // Logger.LogDebug("###" + Context.Sender.Value);
+            // Logger.LogDebug("###" + _superAdminAddress.Value);
+            
+            // 1. validate sender
+            bool isSuperAdmin = Context.Sender == _superAdminAddress;
+            Assert(isSuperAdmin, "Invalid sender.");
+
+            // 2. add a mananger to manager list
+            State.Manager_Base[address] = new BoolValue
+            {
+                Value = true
+            };
 
               return new Empty();
         }
@@ -41,13 +49,16 @@ namespace AElf.Contracts.ManagerList
         /**
          * Remove a manager from manager list.
          */
-        public override Empty RemoveManager(Address address)
+        public override Empty RemoveManager(StringValue walletAddress)
         {
-            // 1. validate address
-            // Assert(ValidateAddress(address), "Invalid address");
+            Address address = Address.FromBase58(walletAddress.Value);
+            
+            // 1. validate sender
+            bool isSuperAdmin = Context.Sender == _superAdminAddress;
+            Assert(isSuperAdmin, "Invalid sender.");
             
             // 2. remove mananger from manager list
-            if (State.Manager_Base[address]==null)
+            if (State.Manager_Base[address]== null)
             {
                 // do nothing
             }
@@ -60,26 +71,45 @@ namespace AElf.Contracts.ManagerList
             }
             return new Empty();
         }
+
+        /**
+         * Check if a address is in ManagerList
+         */
+        public override BoolValue CheckManager(StringValue walletAddress)
+        {
+            Address address = Address.FromBase58(walletAddress.Value);
+            
+            BoolValue result = new BoolValue();
+            if (State.Manager_Base[address] != null && State.Manager_Base[address].Value)
+            {
+                return  new BoolValue { Value = true };
+            }
+            // else if (State.Manager_Base[address] == null || State.Manager_Base[address].Value == false)
+            else
+            {
+               return  new BoolValue { Value = false };
+            }
+        }
+        
         #endregion
+        
+        /**
+         * 三个问题：
+         * 1. 如何打log
+         * 2. python脚本如何打印合约函数返回的true/false值
+         * 3. 合约调用者身份验证问题
+         */
 
         #region View
-        public override StringValue TestMySystemContract(Empty empty)
+        public override StringValue TestMySystemContract(StringValue stringValue)
         {
             
             return new StringValue
             {
-                Value = "success"
+                Value = stringValue.Value
             };
         }
-
         #endregion view
         
-        /**
-         * Validate address 
-         */
-        // private bool ValidateAddress(Address address)
-        // {
-        //     return true;
-        // }
     }
 }

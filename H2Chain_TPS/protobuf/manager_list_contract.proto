@@ -18,12 +18,15 @@ service ManagerListContract {
     rpc Initialize(google.protobuf.Empty) returns (google.protobuf.Empty){
     }
 
-    rpc AddManager(aelf.Address) returns (google.protobuf.Empty) {
+    rpc AddManager(google.protobuf.StringValue) returns (google.protobuf.Empty) {
     }
 
-    rpc RemoveManager(aelf.Address) returns (google.protobuf.Empty) {
+    rpc RemoveManager(google.protobuf.StringValue) returns (google.protobuf.Empty) {
     }
 
-    rpc TestMySystemContract(google.protobuf.Empty) returns (google.protobuf.StringValue) {
+    rpc CheckManager(google.protobuf.StringValue) returns (google.protobuf.BoolValue) {
+    }
+
+    rpc TestMySystemContract(google.protobuf.StringValue) returns (google.protobuf.StringValue) {
     }
 }
