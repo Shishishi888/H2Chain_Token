@@ -12,6 +12,7 @@ namespace AElf.Contracts.ManagerList
     public  class ManagerListContract : ManagerListContractImplContainer.ManagerListContractImplBase
     {
         // private ILogger<ManagerListContract> Logger { get; set; }
+        
         private Address _superAdminAddress;
         
         #region Action
@@ -34,8 +35,8 @@ namespace AElf.Contracts.ManagerList
             // Logger.LogDebug("###" + _superAdminAddress.Value);
             
             // 1. validate sender
-            bool isSuperAdmin = Context.Sender == _superAdminAddress;
-            Assert(isSuperAdmin, "Invalid sender.");
+            bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
+            Assert(!isSuperAdmin, "Invalid sender.");
 
             // 2. add a mananger to manager list
             State.Manager_Base[address] = new BoolValue
@@ -54,8 +55,8 @@ namespace AElf.Contracts.ManagerList
             Address address = Address.FromBase58(walletAddress.Value);
             
             // 1. validate sender
-            bool isSuperAdmin = Context.Sender == _superAdminAddress;
-            Assert(isSuperAdmin, "Invalid sender.");
+            bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
+            Assert(!isSuperAdmin, "Invalid sender.");
             
             // 2. remove mananger from manager list
             if (State.Manager_Base[address]== null)
@@ -79,7 +80,6 @@ namespace AElf.Contracts.ManagerList
         {
             Address address = Address.FromBase58(walletAddress.Value);
             
-            BoolValue result = new BoolValue();
             if (State.Manager_Base[address] != null && State.Manager_Base[address].Value)
             {
                 return  new BoolValue { Value = true };
@@ -99,6 +99,17 @@ namespace AElf.Contracts.ManagerList
          * 2. python脚本如何打印合约函数返回的true/false值
          * 3. 合约调用者身份验证问题
          */
+        
+        #region Action
+        /**
+         *  Set if allow free transfer.
+         */
+        
+        /**
+         *  Get if allow free transfer
+         */
+        
+        #endregion
 
         #region View
         public override StringValue TestMySystemContract(StringValue stringValue)
