@@ -7,5 +7,7 @@ namespace AElf.Contracts.ManagerList
     public class ManagerListState : ContractState
     {
         public MappedState<Address, BoolValue> Manager_Base { get; set; }
+        
+        public BoolState AllowFreeTransfer { get; set; }
     }
 }

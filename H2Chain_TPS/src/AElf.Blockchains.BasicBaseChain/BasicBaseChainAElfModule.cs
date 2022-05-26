@@ -78,6 +78,7 @@ namespace AElf.Blockchains.BasicBaseChain
             var newConfig = new ConfigurationBuilder().AddConfiguration(configuration)
                 .AddJsonFile($"appsettings.{chainType}.{netType}.json")
                 .AddJsonFile($"appsettings.{hostingEnvironment.EnvironmentName}.json", true)
+                .AddJsonFile("appsettings.json")
                 .SetBasePath(contentRootPath)
                 .Build();
 
@@ -107,6 +108,13 @@ namespace AElf.Blockchains.BasicBaseChain
                 options.GenesisContractDir = Path.Combine(contentRootPath, "genesis");
             });
             Configure<WebAppOptions>(newConfig.GetSection("WebApp"));
+            
+            // Configure<SuperAdminOptions>(options =>
+            // {
+            //     options.SuperAdminAddress = newConfig.GetValue("");
+            // });
+            
+            Configure<SuperAdminOptions>(newConfig.GetSection("NodeAccount"));
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)

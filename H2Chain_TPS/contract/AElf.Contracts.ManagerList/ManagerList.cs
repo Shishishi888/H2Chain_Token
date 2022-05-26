@@ -1,3 +1,4 @@
+using AElf.Sdk.CSharp.State;
 using AElf.Types;
 using Google.Protobuf.WellKnownTypes;
 // using Microsoft.Extensions.Logging;
@@ -19,6 +20,9 @@ namespace AElf.Contracts.ManagerList
 
         public override Empty Initialize(Empty input)
         {
+             // 从appsetings.json里加载数据
+             // _superAdminAddress = Address.FromBase58();
+            
             _superAdminAddress = Address.FromBase58("y35saYSrfXtQXKWodZ2XEBA2wCdbC21YKzFHxwLhZovgsX4xn");
             State.Manager_Base[_superAdminAddress] = new BoolValue { Value = true };
             return new Empty();
@@ -59,7 +63,7 @@ namespace AElf.Contracts.ManagerList
             Assert(!isSuperAdmin, "Invalid sender.");
             
             // 2. remove mananger from manager list
-            if (State.Manager_Base[address]== null)
+            if (State.Manager_Base[address] == null)
             {
                 // do nothing
             }
@@ -80,11 +84,11 @@ namespace AElf.Contracts.ManagerList
         {
             Address address = Address.FromBase58(walletAddress.Value);
             
-            if (State.Manager_Base[address] != null && State.Manager_Base[address].Value)
+            if (State.Manager_Base[address] != null && State.Manager_Base[address].Value == true)
             {
                 return  new BoolValue { Value = true };
             }
-            // else if (State.Manager_Base[address] == null || State.Manager_Base[address].Value == false)
+            // if (State.Manager_Base[address] == null || State.Manager_Base[address].Value == false)
             else
             {
                return  new BoolValue { Value = false };
@@ -92,22 +96,46 @@ namespace AElf.Contracts.ManagerList
         }
         
         #endregion
-        
-        /**
-         * 三个问题：
-         * 1. 如何打log
-         * 2. python脚本如何打印合约函数返回的true/false值
-         * 3. 合约调用者身份验证问题
-         */
+
         
         #region Action
-        /**
-         *  Set if allow free transfer.
-         */
         
         /**
-         *  Get if allow free transfer
+         * Set if allow free transfer.
          */
+        public override Empty SetAllowFreeTransfer(BoolValue allow)
+        {
+            // 1. validate sender
+            bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
+            Assert(!isSuperAdmin, "Invalid sender.");
+            
+            // 2. set if allow free transfer
+            if (allow.Value == true)
+            {
+                State.AllowFreeTransfer = new BoolState { Value = true };
+            }
+            else
+            {
+                State.AllowFreeTransfer = new BoolState { Value = false };
+            }
+
+            return new Empty();
+        }
+        
+        /**
+         * Get if allow free transfer.
+         */
+        public BoolValue GetAllowFreeTransfer(Empty input)
+        {
+            if (State.AllowFreeTransfer.Value == true)
+            {
+                return new BoolValue { Value = true };
+            }
+            else
+            {
+                return new BoolValue { Value = false };
+            }
+        }
         
         #endregion
 

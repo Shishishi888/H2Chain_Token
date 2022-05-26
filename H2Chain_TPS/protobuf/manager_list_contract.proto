@@ -27,6 +27,9 @@ service ManagerListContract {
     rpc CheckManager(google.protobuf.StringValue) returns (google.protobuf.BoolValue) {
     }
 
+    rpc SetAllowFreeTransfer(google.protobuf.BoolValue) returns (google.protobuf.Empty) {
+    }
+
     rpc TestMySystemContract(google.protobuf.StringValue) returns (google.protobuf.StringValue) {
     }
 }
