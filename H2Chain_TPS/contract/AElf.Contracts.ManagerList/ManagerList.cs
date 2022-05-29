@@ -40,7 +40,7 @@ namespace AElf.Contracts.ManagerList
             
             // 1. validate sender
             bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
-            Assert(!isSuperAdmin, "Invalid sender.");
+            Assert(isSuperAdmin, "Invalid sender.");
 
             // 2. add a mananger to manager list
             State.Manager_Base[address] = new BoolValue
@@ -60,7 +60,7 @@ namespace AElf.Contracts.ManagerList
             
             // 1. validate sender
             bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
-            Assert(!isSuperAdmin, "Invalid sender.");
+            Assert(isSuperAdmin, "Invalid sender.");
             
             // 2. remove mananger from manager list
             if (State.Manager_Base[address] == null)
