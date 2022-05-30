@@ -27,6 +27,7 @@ using AElf.WebApp.Web;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Volo.Abp;
 using Volo.Abp.AspNetCore;
@@ -63,6 +64,9 @@ namespace AElf.Blockchains.BasicBaseChain
     )]
     public class BasicBaseChainAElfModule : AElfModule
     {
+        private ILogger<BasicBaseChainAElfModule> Logger { get; set; }
+        // private SuperAdminOptions _superAdminOptions;
+        
         public OsBlockchainNodeContext OsBlockchainNodeContext { get; set; }
 
         public override void PreConfigureServices(ServiceConfigurationContext context)
@@ -108,13 +112,12 @@ namespace AElf.Blockchains.BasicBaseChain
                 options.GenesisContractDir = Path.Combine(contentRootPath, "genesis");
             });
             Configure<WebAppOptions>(newConfig.GetSection("WebApp"));
+
+            // Configure<SuperAdminOptions>(newConfig.GetSection("NodeAccount"));
+            // Logger.LogDebug("###" + _superAdminOptions.NodeAccount);
             
-            // Configure<SuperAdminOptions>(options =>
-            // {
-            //     options.SuperAdminAddress = newConfig.GetValue("");
-            // });
             
-            Configure<SuperAdminOptions>(newConfig.GetSection("NodeAccount"));
+            
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)

@@ -1,6 +1,7 @@
 using AElf.Standards.ACS1;
 using AElf.Sdk.CSharp.State;
 using AElf.Types;
+using AElf.Contracts.ManagerList;
 
 namespace AElf.Contracts.MultiToken
 {

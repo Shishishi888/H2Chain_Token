@@ -25,9 +25,14 @@ service ManagerListContract {
     }
 
     rpc CheckManager(google.protobuf.StringValue) returns (google.protobuf.BoolValue) {
+        option (aelf.is_view) = true;
     }
 
     rpc SetAllowFreeTransfer(google.protobuf.BoolValue) returns (google.protobuf.Empty) {
+    }
+
+    rpc GetAllowFreeTransfer(google.protobuf.Empty) returns (google.protobuf.BoolValue) {
+        option (aelf.is_view) = true;
     }
 
     rpc TestMySystemContract(google.protobuf.StringValue) returns (google.protobuf.StringValue) {

@@ -1,7 +1,7 @@
 using AElf.Sdk.CSharp.State;
 using AElf.Types;
 using Google.Protobuf.WellKnownTypes;
-// using Microsoft.Extensions.Logging;
+using AElf.Kernel;
 
 /*
  * ManagerListContract
@@ -15,7 +15,7 @@ namespace AElf.Contracts.ManagerList
         // private ILogger<ManagerListContract> Logger { get; set; }
         
         private Address _superAdminAddress;
-        
+
         #region Action
 
         public override Empty Initialize(Empty input)
@@ -40,7 +40,7 @@ namespace AElf.Contracts.ManagerList
             
             // 1. validate sender
             bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
-            Assert(!isSuperAdmin, "Invalid sender.");
+            Assert(isSuperAdmin, "Invalid sender.");
 
             // 2. add a mananger to manager list
             State.Manager_Base[address] = new BoolValue
@@ -60,7 +60,7 @@ namespace AElf.Contracts.ManagerList
             
             // 1. validate sender
             bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
-            Assert(!isSuperAdmin, "Invalid sender.");
+            Assert(isSuperAdmin, "Invalid sender.");
             
             // 2. remove mananger from manager list
             if (State.Manager_Base[address] == null)
@@ -107,7 +107,7 @@ namespace AElf.Contracts.ManagerList
         {
             // 1. validate sender
             bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
-            Assert(!isSuperAdmin, "Invalid sender.");
+            Assert(isSuperAdmin, "Invalid sender.");
             
             // 2. set if allow free transfer
             if (allow.Value == true)
@@ -125,7 +125,7 @@ namespace AElf.Contracts.ManagerList
         /**
          * Get if allow free transfer.
          */
-        public BoolValue GetAllowFreeTransfer(Empty input)
+        public override BoolValue GetAllowFreeTransfer(Empty empty)
         {
             if (State.AllowFreeTransfer.Value == true)
             {

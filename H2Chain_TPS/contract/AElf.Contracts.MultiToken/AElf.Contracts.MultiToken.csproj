@@ -48,6 +48,9 @@
         <ContractReference Include="..\..\protobuf\aedpos_contract.proto">
             <Link>Protobuf\Proto\reference\aedpos_contract.proto</Link>
         </ContractReference>
+        <ContractReference Include="..\..\protobuf\manager_list_contract.proto">
+            <Link>Protobuf\Proto\reference\manager_list_contract.proto</Link>
+        </ContractReference>
     </ItemGroup>
 
     <ItemGroup>
