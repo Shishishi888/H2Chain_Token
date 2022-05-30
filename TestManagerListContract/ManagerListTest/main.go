@@ -6,6 +6,8 @@ import (
 	"time"
 
 	"github.com/AElfProject/aelf-sdk.go/client"
+	pb "github.com/AElfProject/aelf-sdk.go/protobuf/generated"
+	"github.com/AElfProject/aelf-sdk.go/utils"
 	proto "github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/golang/protobuf/ptypes/wrappers"
@@ -108,16 +110,65 @@ func CheckManager(addr string) {
 	fmt.Println(realRes.Value)
 }
 
+func transfer(to string, amount int64) {
+	toAddr, _ := utils.Base58StringToAddress(to)
+	transferInput := &pb.TransferInput{
+		To:     toAddr,
+		Symbol: "ELF",
+		Amount: amount,
+		Memo:   "test",
+	}
+	transferInputProto, _ := proto.Marshal(transferInput)
+	multiTokenAddr, _ := aelfClient.GetContractAddressByName("AElf.ContractNames.Token")
+	tx, _ := aelfClient.CreateTransaction(fromAddress, multiTokenAddr, "Transfer", transferInputProto)
+	signature, _ := aelfClient.SignTransaction(aelfClient.PrivateKey, tx)
+	tx.Signature = signature
+	transactionByets, _ := proto.Marshal(tx)
+	sendResult, _ := aelfClient.SendTransaction(hex.EncodeToString(transactionByets))
+	fmt.Println("txID = " + sendResult.TransactionID)
+	for {
+		res, _ := aelfClient.GetTransactionResult(sendResult.TransactionID)
+		if res.Status == "MINED" {
+			fmt.Println("Mined.")
+			break
+		}
+		fmt.Println(res.Status)
+		time.Sleep(time.Duration(1) * time.Second)
+	}
+
+}
+
+func balance(who string) {
+	ownerAddr, _ := utils.Base58StringToAddress(who)
+	balanceInput := &pb.GetBalanceInput{
+		Owner:  ownerAddr,
+		Symbol: "ELF",
+	}
+	balanceInputProto, _ := proto.Marshal(balanceInput)
+	multiTokenAddr, _ := aelfClient.GetContractAddressByName("AElf.ContractNames.Token")
+	tx, _ := aelfClient.CreateTransaction(fromAddress, multiTokenAddr, "GetBalance", balanceInputProto)
+	signature, _ := aelfClient.SignTransaction(aelfClient.PrivateKey, tx)
+	tx.Signature = signature
+	transactionByets, _ := proto.Marshal(tx)
+	sendResult, _ := aelfClient.ExecuteTransaction(hex.EncodeToString(transactionByets))
+	res, _ := hex.DecodeString(sendResult)
+	realRes := &pb.GetBalanceOutput{}
+	proto.Unmarshal(res, realRes)
+	fmt.Printf("Balance of %s = %d\n", who, realRes.Balance)
+}
+
 func main() {
 	//第一个参数ip+端口，第二个参数私钥
 	aelfInit("http://101.201.46.135:8000", "8e9d0c5741c72690cb0031894cd91bb7278395907d6631a7aa5b86b8beb75585")
 
 	Initialize()
-
 	//下面的都是Address
+	transfer("zuPmz56jyfVcduKk3qgZbUXxY7ED3kggQTYj48tFrS2xpmwnY", 10)
+
+	balance("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+
+	RemoveManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+
 	CheckManager("2eFQAZk5bYmeBVg1RN7qSAydS1AYyXrSyFVU9BfzBxFZh4csuf")
-	AddManager("2eFQAZk5bYmeBVg1RN7qSAydS1AYyXrSyFVU9BfzBxFZh4csuf")
-	CheckManager("2eFQAZk5bYmeBVg1RN7qSAydS1AYyXrSyFVU9BfzBxFZh4csuf")
-	RemoveManager("2eFQAZk5bYmeBVg1RN7qSAydS1AYyXrSyFVU9BfzBxFZh4csuf")
-	CheckManager("2eFQAZk5bYmeBVg1RN7qSAydS1AYyXrSyFVU9BfzBxFZh4csuf")
+
 }

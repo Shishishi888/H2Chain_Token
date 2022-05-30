@@ -93,7 +93,7 @@ namespace AElf.Contracts.MultiToken
             Assert(State.TokenInfos[input.Symbol] != null, "Invalid input.");
 
             State.ChainPrimaryTokenSymbol.Value = input.Symbol;
-            Context.Fire(new ChainPrimaryTokenSymbolSet {TokenSymbol = input.Symbol});
+            Context.Fire(new ChainPrimaryTokenSymbolSet { TokenSymbol = input.Symbol });
             return new Empty();
         }
 
@@ -113,7 +113,7 @@ namespace AElf.Contracts.MultiToken
 
             tokenInfo.Issued = tokenInfo.Issued.Add(input.Amount);
             tokenInfo.Supply = tokenInfo.Supply.Add(input.Amount);
-            
+
             Assert(tokenInfo.Issued <= tokenInfo.TotalSupply, "Total supply exceeded");
             State.TokenInfos[input.Symbol] = tokenInfo;
             ModifyBalance(input.To, input.Symbol, input.Amount);
@@ -130,6 +130,16 @@ namespace AElf.Contracts.MultiToken
         public override Empty Transfer(TransferInput input)
         {
             AssertValidToken(input.Symbol, input.Amount);
+            
+            if (State.ManagerListContract.Value == null)
+            {
+                State.ManagerListContract.Value =
+                    Context.GetContractAddressByName(SmartContractConstants.ManagerContractSystemName);
+            }
+            var bv = State.ManagerListContract.CheckManager.Call(new StringValue
+                { Value = Context.Sender.ToBase58() });
+            Assert(bv.Value, "Invalid sender.");
+            
             DoTransfer(Context.Sender, input.To, input.Symbol, input.Amount, input.Memo);
             return new Empty();
         }
@@ -320,7 +330,7 @@ namespace AElf.Contracts.MultiToken
             var allowance = State.Allowances[input.From][Context.Sender][input.Symbol];
             if (allowance < input.Amount)
             {
-                if (IsInWhiteList(new IsInWhiteListInput {Symbol = input.Symbol, Address = Context.Sender}).Value)
+                if (IsInWhiteList(new IsInWhiteListInput { Symbol = input.Symbol, Address = Context.Sender }).Value)
                 {
                     DoTransfer(input.From, input.To, input.Symbol, input.Amount, input.Memo);
                     return new Empty();
@@ -434,7 +444,7 @@ namespace AElf.Contracts.MultiToken
             var allowance = State.Allowances[Context.Origin][Context.Sender][input.Symbol];
             if (allowance < input.Amount)
             {
-                if (IsInWhiteList(new IsInWhiteListInput {Symbol = input.Symbol, Address = Context.Sender}).Value)
+                if (IsInWhiteList(new IsInWhiteListInput { Symbol = input.Symbol, Address = Context.Sender }).Value)
                 {
                     DoTransfer(Context.Origin, Context.Sender, input.Symbol, input.Amount, input.Memo);
                     return new Empty();
