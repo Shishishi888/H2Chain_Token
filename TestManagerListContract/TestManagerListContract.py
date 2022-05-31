@@ -29,7 +29,7 @@ transfer_input.value = "y35saYSrfXtQXKWodZ2XEBA2wCdbC21YKzFHxwLhZovgsX4xn"
 
 transaction = aelf.create_transaction(
      contract_address,
-     "AddManager",
+     "CheckManager",
      transfer_input.SerializeToString()
 )
 
