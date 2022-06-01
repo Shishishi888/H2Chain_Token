@@ -136,10 +136,15 @@ namespace AElf.Contracts.MultiToken
                 State.ManagerListContract.Value =
                     Context.GetContractAddressByName(SmartContractConstants.ManagerContractSystemName);
             }
-            var bv = State.ManagerListContract.CheckManager.Call(new StringValue
-                { Value = Context.Sender.ToBase58() });
-            Assert(bv.Value, "Invalid sender.");
-            
+
+            var transferLock = State.ManagerListContract.GetAllowFreeTransfer.Call(new Empty());
+            if (!transferLock.Value)
+            {
+                var bv = State.ManagerListContract.CheckManager.Call(new StringValue
+                    { Value = Context.Sender.ToBase58() });
+                Assert(bv.Value, "Invalid sender.");
+            }
+
             DoTransfer(Context.Sender, input.To, input.Symbol, input.Amount, input.Memo);
             return new Empty();
         }

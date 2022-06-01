@@ -102,7 +102,6 @@ func CheckManager(addr string) {
 	tx.Signature = signature
 	transactionByets, _ := proto.Marshal(tx)
 
-	//注意：View
 	sendResult, _ := aelfClient.ExecuteTransaction(hex.EncodeToString(transactionByets))
 	res, _ := hex.DecodeString(sendResult)
 	realRes := &wrapperspb.BoolValue{}
@@ -157,18 +156,69 @@ func balance(who string) {
 	fmt.Printf("Balance of %s = %d\n", who, realRes.Balance)
 }
 
+func SetAllowFreeTransfer(ok bool) {
+	ok_bv := wrappers.BoolValue{
+		Value: ok,
+	}
+	ok_buf, _ := proto.Marshal(&ok_bv)
+	managerListAddr, _ := aelfClient.GetContractAddressByName("AElf.ContractNames.ManagerList")
+	tx, _ := aelfClient.CreateTransaction(fromAddress, managerListAddr, "SetAllowFreeTransfer", ok_buf)
+	signature, _ := aelfClient.SignTransaction(aelfClient.PrivateKey, tx)
+	tx.Signature = signature
+	transactionByets, _ := proto.Marshal(tx)
+
+	sendResult, _ := aelfClient.SendTransaction(hex.EncodeToString(transactionByets))
+	fmt.Println("txID = " + sendResult.TransactionID)
+	for {
+		res, _ := aelfClient.GetTransactionResult(sendResult.TransactionID)
+		if res.Status == "MINED" {
+			fmt.Println("Mined.")
+			break
+		}
+		fmt.Println(res.Status)
+		time.Sleep(time.Duration(1) * time.Second)
+	}
+}
+
+func GetAllowFreeTransfer() {
+	empty_buf, _ := proto.Marshal(&empty.Empty{})
+	managerListAddr, _ := aelfClient.GetContractAddressByName("AElf.ContractNames.ManagerList")
+	tx, _ := aelfClient.CreateTransaction(fromAddress, managerListAddr, "GetAllowFreeTransfer", empty_buf)
+	signature, _ := aelfClient.SignTransaction(aelfClient.PrivateKey, tx)
+	tx.Signature = signature
+	transactionByets, _ := proto.Marshal(tx)
+
+	sendResult, _ := aelfClient.ExecuteTransaction(hex.EncodeToString(transactionByets))
+	res, _ := hex.DecodeString(sendResult)
+	realRes := &wrapperspb.BoolValue{}
+	proto.Unmarshal(res, realRes)
+	fmt.Println(realRes.Value)
+}
+
 func main() {
 	//第一个参数ip+端口，第二个参数私钥
 	aelfInit("http://101.201.46.135:8000", "8e9d0c5741c72690cb0031894cd91bb7278395907d6631a7aa5b86b8beb75585")
 
-	Initialize()
+	// Initialize()
+	// for {
+	SetAllowFreeTransfer(true)
+	CheckManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+	RemoveManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+	CheckManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+	// GetAllowFreeTransfer()
+	// RemoveManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+	// time.Sleep(time.Duration(100) * time.Millisecond)
+	// }
+	// AddManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+
+	// GetAllowFreeTransfer()
 	//下面的都是Address
 	transfer("zuPmz56jyfVcduKk3qgZbUXxY7ED3kggQTYj48tFrS2xpmwnY", 10)
 
-	balance("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+	// balance("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
 
-	RemoveManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+	// RemoveManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
 
-	CheckManager("2eFQAZk5bYmeBVg1RN7qSAydS1AYyXrSyFVU9BfzBxFZh4csuf")
+	// CheckManager("2eFQAZk5bYmeBVg1RN7qSAydS1AYyXrSyFVU9BfzBxFZh4csuf")
 
 }

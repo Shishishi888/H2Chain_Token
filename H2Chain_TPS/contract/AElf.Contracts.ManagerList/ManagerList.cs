@@ -108,15 +108,14 @@ namespace AElf.Contracts.ManagerList
             // 1. validate sender
             bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
-            
             // 2. set if allow free transfer
-            if (allow.Value == true)
+            if (allow.Value)
             {
-                State.AllowFreeTransfer = new BoolState { Value = true };
+                State.AllowFreeTransfer.Value = true;
             }
             else
             {
-                State.AllowFreeTransfer = new BoolState { Value = false };
+                State.AllowFreeTransfer.Value = false;
             }
 
             return new Empty();
