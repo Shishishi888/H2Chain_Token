@@ -2,6 +2,7 @@ namespace AElf.Kernel
 {
     public class SuperAdminOptions
     {
-        public int NodeAccount { get; set; }
+        public string NodeAccount { get; set; }
+        public string NodeAccountPassword { get; set; }
     }
 }

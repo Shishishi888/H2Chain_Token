@@ -17,14 +17,14 @@ namespace AElf.Contracts.ManagerList
 
         public ManagerListContractTestBase()
         {
-            var mainChainId = ChainHelper.ConvertBase58ToChainId("AELF");
-            var chainId = ChainHelper.GetChainId(1);
-            Tester = new ContractTester<ManagerListContractTestAElfModule>(chainId,SampleECKeyPairs.KeyPairs[1]);
-            AsyncHelper.RunSync(() =>
-                Tester.InitialChainAsyncWithAuthAsync(Tester.GetSideChainSystemContract(
-                    Tester.GetCallOwnerAddress(),
-                    mainChainId,"STA",out TotalSupply,Tester.GetCallOwnerAddress())));
-            ManagerListContractAddress = Tester.GetContractAddress(ManagerListSmartContractAddressNameProvider.Name);
+            // var mainChainId = ChainHelper.ConvertBase58ToChainId("AELF");
+            // var chainId = ChainHelper.GetChainId(1);
+            // Tester = new ContractTester<ManagerListContractTestAElfModule>(chainId,SampleECKeyPairs.KeyPairs[1]);
+            // AsyncHelper.RunSync(() =>
+            //     Tester.InitialChainAsyncWithAuthAsync(Tester.GetSideChainSystemContract(
+            //         Tester.GetCallOwnerAddress(),
+            //         mainChainId,"STA",out TotalSupply,Tester.GetCallOwnerAddress())));
+            // ManagerListContractAddress = Tester.GetContractAddress(ManagerListSmartContractAddressNameProvider.Name);
         }
     }
 }

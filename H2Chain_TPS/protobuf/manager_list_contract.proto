@@ -15,7 +15,8 @@ option csharp_namespace = "AElf.Contracts.ManagerList";
 service ManagerListContract {
     
     option (aelf.csharp_state) = "AElf.Contracts.ManagerList.ManagerListState";
-    rpc Initialize(google.protobuf.Empty) returns (google.protobuf.Empty){
+    
+    rpc Initialize(google.protobuf.StringValue) returns (google.protobuf.Empty){
     }
 
     rpc AddManager(google.protobuf.StringValue) returns (google.protobuf.Empty) {

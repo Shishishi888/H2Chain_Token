@@ -9,5 +9,7 @@ namespace AElf.Contracts.ManagerList
         public MappedState<Address, BoolValue> Manager_Base { get; set; }
         
         public BoolState AllowFreeTransfer { get; set; }
+        
+        public BoolState UnLockInitializeMethod { get; set; }
     }
 }

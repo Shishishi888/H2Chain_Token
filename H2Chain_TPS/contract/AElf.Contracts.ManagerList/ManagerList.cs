@@ -5,26 +5,32 @@ using AElf.Kernel;
 
 /*
  * ManagerListContract
- * Author: ShiYang WeiHanWang
+ * Author: ShiYang
  * Date: 2022.05.17
  */
 namespace AElf.Contracts.ManagerList
 {
     public  class ManagerListContract : ManagerListContractImplContainer.ManagerListContractImplBase
     {
-        // private ILogger<ManagerListContract> Logger { get; set; }
-        
         private Address _superAdminAddress;
 
         #region Action
 
-        public override Empty Initialize(Empty input)
+        /**
+         * Initialize function.
+         * Only can be called once.
+         */
+        public override Empty Initialize(StringValue superAdminAddress)
         {
-             // 从appsetings.json里加载数据
-             // _superAdminAddress = Address.FromBase58();
+            Assert(State.UnLockInitializeMethod.Value, "Have initialized.");  // 已经执行过 Initialize 方法
             
-            _superAdminAddress = Address.FromBase58("y35saYSrfXtQXKWodZ2XEBA2wCdbC21YKzFHxwLhZovgsX4xn");
+            _superAdminAddress = Address.FromBase58(superAdminAddress.Value);
             State.Manager_Base[_superAdminAddress] = new BoolValue { Value = true };
+
+            State.AllowFreeTransfer.Value = true;
+            
+            State.UnLockInitializeMethod.Value = false;
+
             return new Empty();
         }
         
@@ -35,9 +41,6 @@ namespace AElf.Contracts.ManagerList
         {
             Address address = Address.FromBase58(walletAddress.Value);
 
-            // Logger.LogDebug("###" + Context.Sender.Value);
-            // Logger.LogDebug("###" + _superAdminAddress.Value);
-            
             // 1. validate sender
             bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
@@ -108,6 +111,7 @@ namespace AElf.Contracts.ManagerList
             // 1. validate sender
             bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
+            
             // 2. set if allow free transfer
             if (allow.Value)
             {

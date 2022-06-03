@@ -113,11 +113,8 @@ namespace AElf.Blockchains.BasicBaseChain
             });
             Configure<WebAppOptions>(newConfig.GetSection("WebApp"));
 
-            // Configure<SuperAdminOptions>(newConfig.GetSection("NodeAccount"));
+            Configure<SuperAdminOptions>(newConfig.GetSection("NodeAccount"));
             // Logger.LogDebug("###" + _superAdminOptions.NodeAccount);
-            
-            
-            
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
