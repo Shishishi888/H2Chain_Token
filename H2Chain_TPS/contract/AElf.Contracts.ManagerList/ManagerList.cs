@@ -12,8 +12,6 @@ namespace AElf.Contracts.ManagerList
 {
     public  class ManagerListContract : ManagerListContractImplContainer.ManagerListContractImplBase
     {
-        private Address _superAdminAddress;
-
         #region Action
 
         /**
@@ -24,9 +22,11 @@ namespace AElf.Contracts.ManagerList
         {
             Assert(State.UnLockInitializeMethod.Value, "Have initialized.");  // 已经执行过 Initialize 方法
             
-            _superAdminAddress = Address.FromBase58(superAdminAddress.Value);
-            State.Manager_Base[_superAdminAddress] = new BoolValue { Value = true };
-
+            Address address = Address.FromBase58(superAdminAddress.Value);
+            State.ManagerBase[address] = new BoolValue { Value = true };
+            
+            State.SuperAdminAddress.Value = superAdminAddress.Value;
+            
             State.AllowFreeTransfer.Value = true;
             
             State.UnLockInitializeMethod.Value = false;
@@ -40,13 +40,15 @@ namespace AElf.Contracts.ManagerList
         public override  Empty AddManager(StringValue walletAddress)
         {
             Address address = Address.FromBase58(walletAddress.Value);
+            
 
             // 1. validate sender
-            bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
+            Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
+            bool isSuperAdmin = Context.Sender == superAdminAddress;
             Assert(isSuperAdmin, "Invalid sender.");
 
             // 2. add a mananger to manager list
-            State.Manager_Base[address] = new BoolValue
+            State.ManagerBase[address] = new BoolValue
             {
                 Value = true
             };
@@ -62,17 +64,18 @@ namespace AElf.Contracts.ManagerList
             Address address = Address.FromBase58(walletAddress.Value);
             
             // 1. validate sender
-            bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
+            Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
+            bool isSuperAdmin = Context.Sender == superAdminAddress;
             Assert(isSuperAdmin, "Invalid sender.");
             
             // 2. remove mananger from manager list
-            if (State.Manager_Base[address] == null)
+            if (State.ManagerBase[address] == null)
             {
                 // do nothing
             }
             else
             {
-                State.Manager_Base[address] = new BoolValue
+                State.ManagerBase[address] = new BoolValue
                 {
                     Value = false
                 };
@@ -87,7 +90,7 @@ namespace AElf.Contracts.ManagerList
         {
             Address address = Address.FromBase58(walletAddress.Value);
             
-            if (State.Manager_Base[address] != null && State.Manager_Base[address].Value == true)
+            if (State.ManagerBase[address] != null && State.ManagerBase[address].Value == true)
             {
                 return  new BoolValue { Value = true };
             }
@@ -109,7 +112,8 @@ namespace AElf.Contracts.ManagerList
         public override Empty SetAllowFreeTransfer(BoolValue allow)
         {
             // 1. validate sender
-            bool isSuperAdmin = Context.Sender.Value == _superAdminAddress.Value;
+            Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
+            bool isSuperAdmin = Context.Sender == superAdminAddress;
             Assert(isSuperAdmin, "Invalid sender.");
             
             // 2. set if allow free transfer
