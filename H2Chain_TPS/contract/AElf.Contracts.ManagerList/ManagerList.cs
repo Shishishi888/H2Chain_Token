@@ -20,7 +20,7 @@ namespace AElf.Contracts.ManagerList
          */
         public override Empty Initialize(StringValue superAdminAddress)
         {
-            Assert(State.UnLockInitializeMethod.Value, "Have initialized.");  // 已经执行过 Initialize 方法
+            Assert(State.InitializeMethodLock.Value, "Initialize method has been called.");  // 已经执行过 Initialize 方法
             
             Address address = Address.FromBase58(superAdminAddress.Value);
             State.ManagerBase[address] = new BoolValue { Value = true };
@@ -29,7 +29,7 @@ namespace AElf.Contracts.ManagerList
             
             State.AllowFreeTransfer.Value = true;
             
-            State.UnLockInitializeMethod.Value = false;
+            State.InitializeMethodLock.Value = false;  // Initialize method has been called.
 
             return new Empty();
         }
@@ -41,13 +41,15 @@ namespace AElf.Contracts.ManagerList
         {
             Address address = Address.FromBase58(walletAddress.Value);
             
+            // 1. validate initialize method
+            Assert(!State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
 
-            // 1. validate sender
+            // 2. validate sender
             Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
             bool isSuperAdmin = Context.Sender == superAdminAddress;
             Assert(isSuperAdmin, "Invalid sender.");
 
-            // 2. add a mananger to manager list
+            // 3. add a mananger to manager list
             State.ManagerBase[address] = new BoolValue
             {
                 Value = true
@@ -63,12 +65,15 @@ namespace AElf.Contracts.ManagerList
         {
             Address address = Address.FromBase58(walletAddress.Value);
             
-            // 1. validate sender
+            // 1. validate initialize method
+            Assert(!State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
+            
+            // 2. validate sender
             Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
             bool isSuperAdmin = Context.Sender == superAdminAddress;
             Assert(isSuperAdmin, "Invalid sender.");
             
-            // 2. remove mananger from manager list
+            // 3. remove mananger from manager list
             if (State.ManagerBase[address] == null)
             {
                 // do nothing
@@ -111,12 +116,15 @@ namespace AElf.Contracts.ManagerList
          */
         public override Empty SetAllowFreeTransfer(BoolValue allow)
         {
-            // 1. validate sender
+            // 1. validate initialize method
+            Assert(!State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
+            
+            // 2. validate sender
             Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
             bool isSuperAdmin = Context.Sender == superAdminAddress;
             Assert(isSuperAdmin, "Invalid sender.");
             
-            // 2. set if allow free transfer
+            // 3. set if allow free transfer
             if (allow.Value)
             {
                 State.AllowFreeTransfer.Value = true;

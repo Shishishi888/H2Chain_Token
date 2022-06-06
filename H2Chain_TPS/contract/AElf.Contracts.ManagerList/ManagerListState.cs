@@ -11,6 +11,6 @@ namespace AElf.Contracts.ManagerList
         
         public BoolState AllowFreeTransfer { get; set; }
         
-        public BoolState UnLockInitializeMethod { get; set; }
+        public BoolState InitializeMethodLock { get; set; }
     }
 }
