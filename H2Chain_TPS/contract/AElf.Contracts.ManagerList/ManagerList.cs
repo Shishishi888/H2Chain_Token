@@ -29,7 +29,7 @@ namespace AElf.Contracts.ManagerList
             
             State.AllowFreeTransfer.Value = true;
             
-            State.InitializeMethodLock.Value = false;  // Initialize method has been called.
+            State.InitializeMethodLock.Value = false;  // 为 Initialize 方法加锁。
 
             return new Empty();
         }
