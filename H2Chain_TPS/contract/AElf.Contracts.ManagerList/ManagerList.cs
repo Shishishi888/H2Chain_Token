@@ -20,7 +20,7 @@ namespace AElf.Contracts.ManagerList
          */
         public override Empty Initialize(StringValue superAdminAddress)
         {
-            Assert(State.InitializeMethodLock.Value, "Initialize method has been called.");  // 已经执行过 Initialize 方法
+            Assert(!State.InitializeMethodLock.Value, "Initialize method has been called.");  // 已经执行过 Initialize 方法
             
             Address address = Address.FromBase58(superAdminAddress.Value);
             State.ManagerBase[address] = new BoolValue { Value = true };
@@ -29,7 +29,7 @@ namespace AElf.Contracts.ManagerList
             
             State.AllowFreeTransfer.Value = true;
             
-            State.InitializeMethodLock.Value = false;  // 为 Initialize 方法加锁。
+            State.InitializeMethodLock.Value = true;  // 为 Initialize 方法加锁。
 
             return new Empty();
         }
@@ -42,7 +42,7 @@ namespace AElf.Contracts.ManagerList
             Address address = Address.FromBase58(walletAddress.Value);
             
             // 1. validate initialize method
-            Assert(!State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
+            Assert(State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
 
             // 2. validate sender
             Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
@@ -66,7 +66,7 @@ namespace AElf.Contracts.ManagerList
             Address address = Address.FromBase58(walletAddress.Value);
             
             // 1. validate initialize method
-            Assert(!State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
+            Assert(State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
             
             // 2. validate sender
             Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
@@ -117,7 +117,7 @@ namespace AElf.Contracts.ManagerList
         public override Empty SetAllowFreeTransfer(BoolValue allow)
         {
             // 1. validate initialize method
-            Assert(!State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
+            Assert(State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
             
             // 2. validate sender
             Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);

@@ -26,10 +26,13 @@ func aelfInit(host string, pk string) {
 	fromAddress = aelfClient.GetAddressFromPrivateKey(aelfClient.PrivateKey)
 }
 
-func Initialize() {
+func Initialize(addr string) {
 	managerListAddr, _ := aelfClient.GetContractAddressByName("AElf.ContractNames.ManagerList")
-	empty_buf, _ := proto.Marshal(&empty.Empty{})
-	tx, _ := aelfClient.CreateTransaction(fromAddress, managerListAddr, "Initialize", empty_buf)
+	addr_sv := wrappers.StringValue{
+		Value: addr,
+	}
+	addr_buf, _ := proto.Marshal(&addr_sv)
+	tx, _ := aelfClient.CreateTransaction(fromAddress, managerListAddr, "Initialize", addr_buf)
 	signature, _ := aelfClient.SignTransaction(aelfClient.PrivateKey, tx)
 	tx.Signature = signature
 	transactionByets, _ := proto.Marshal(tx)
@@ -41,6 +44,7 @@ func Initialize() {
 			fmt.Println("Mined.")
 			break
 		}
+		fmt.Println(res.Status)
 		time.Sleep(time.Duration(1) * time.Second)
 	}
 }
@@ -199,12 +203,14 @@ func main() {
 	//第一个参数ip+端口，第二个参数私钥
 	aelfInit("http://101.201.46.135:8000", "8e9d0c5741c72690cb0031894cd91bb7278395907d6631a7aa5b86b8beb75585")
 
-	// Initialize()
+	// Initialize("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
 	// for {
 	SetAllowFreeTransfer(true)
-	CheckManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+	// CheckManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+	// AddManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+	// CheckManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
 	RemoveManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
-	CheckManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
+	// CheckManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
 	// GetAllowFreeTransfer()
 	// RemoveManager("2En93BYxtBWSghUZWnKudaTX9cdG59SRs4XTyqR5ALGj2REhM8")
 	// time.Sleep(time.Duration(100) * time.Millisecond)
