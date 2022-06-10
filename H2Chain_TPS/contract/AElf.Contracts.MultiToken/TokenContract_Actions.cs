@@ -140,9 +140,13 @@ namespace AElf.Contracts.MultiToken
             var transferLock = State.ManagerListContract.GetAllowFreeTransfer.Call(new Empty());
             if (!transferLock.Value)
             {
-                var bv = State.ManagerListContract.CheckManager.Call(new StringValue
+                var bv1 = State.ManagerListContract.CheckManager.Call(new StringValue
                     { Value = Context.Sender.ToBase58() });
-                Assert(bv.Value, "Invalid sender.");
+                
+                var bv2 = State.ManagerListContract.CheckManager.Call(new StringValue
+                    { Value = input.To.ToBase58() });
+                
+                Assert(bv1.Value || bv2.Value, "Tranfer fails.");
             }
 
             DoTransfer(Context.Sender, input.To, input.Symbol, input.Amount, input.Memo);
