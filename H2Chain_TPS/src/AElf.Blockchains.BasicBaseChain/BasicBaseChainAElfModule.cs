@@ -65,8 +65,7 @@ namespace AElf.Blockchains.BasicBaseChain
     public class BasicBaseChainAElfModule : AElfModule
     {
         private ILogger<BasicBaseChainAElfModule> Logger { get; set; }
-        // private SuperAdminOptions _superAdminOptions;
-        
+
         public OsBlockchainNodeContext OsBlockchainNodeContext { get; set; }
 
         public override void PreConfigureServices(ServiceConfigurationContext context)
@@ -82,7 +81,6 @@ namespace AElf.Blockchains.BasicBaseChain
             var newConfig = new ConfigurationBuilder().AddConfiguration(configuration)
                 .AddJsonFile($"appsettings.{chainType}.{netType}.json")
                 .AddJsonFile($"appsettings.{hostingEnvironment.EnvironmentName}.json", true)
-                .AddJsonFile("appsettings.json")
                 .SetBasePath(contentRootPath)
                 .Build();
 
@@ -112,9 +110,6 @@ namespace AElf.Blockchains.BasicBaseChain
                 options.GenesisContractDir = Path.Combine(contentRootPath, "genesis");
             });
             Configure<WebAppOptions>(newConfig.GetSection("WebApp"));
-
-            Configure<SuperAdminOptions>(newConfig.GetSection("NodeAccount"));
-            // Logger.LogDebug("###" + _superAdminOptions.NodeAccount);
         }
 
         public override void OnApplicationInitialization(ApplicationInitializationContext context)
