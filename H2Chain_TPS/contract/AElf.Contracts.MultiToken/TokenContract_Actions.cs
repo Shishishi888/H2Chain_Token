@@ -146,7 +146,7 @@ namespace AElf.Contracts.MultiToken
                 var bv2 = State.ManagerListContract.CheckManager.Call(new StringValue
                     { Value = input.To.ToBase58() });
                 
-                Assert(bv1.Value || bv2.Value, "Tranfer fails.");
+                Assert(bv1.Value || bv2.Value, "Tranfer failed.");
             }
 
             DoTransfer(Context.Sender, input.To, input.Symbol, input.Amount, input.Memo);
