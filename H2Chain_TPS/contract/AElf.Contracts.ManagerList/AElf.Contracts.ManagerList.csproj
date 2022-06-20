@@ -18,6 +18,12 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <ContractReference Include="..\..\protobuf\token_contract.proto">
+            <Link>Protobuf\Proto\reference\token_contract.proto</Link>
+        </ContractReference>
+    </ItemGroup>
+
+    <ItemGroup>
         <ContractBase Include="..\..\protobuf\manager_list_contract.proto">
             <Link>Protobuf\Proto\manager_list_contract.proto</Link>
         </ContractBase>

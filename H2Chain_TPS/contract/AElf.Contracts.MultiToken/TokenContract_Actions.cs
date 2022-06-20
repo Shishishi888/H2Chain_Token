@@ -133,12 +133,10 @@ namespace AElf.Contracts.MultiToken
             
             if (State.ManagerListContract.Value == null)
             {
-                State.ManagerListContract.Value =
-                    Context.GetContractAddressByName(SmartContractConstants.ManagerContractSystemName);
+                State.ManagerListContract.Value = Context.GetContractAddressByName(SmartContractConstants.ManagerContractSystemName);
             }
-
-            var transferLock = State.ManagerListContract.GetAllowFreeTransfer.Call(new Empty());
-            if (!transferLock.Value)
+            var transferLock = State.ManagerListContract.GetTransferMode.Call(new Empty());
+            if (!transferLock.Value)  // not allow free transfer
             {
                 var bv1 = State.ManagerListContract.CheckManager.Call(new StringValue
                     { Value = Context.Sender.ToBase58() });

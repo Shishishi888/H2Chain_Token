@@ -12,6 +12,9 @@ namespace AElf.Contracts.ManagerList
 {
     public  class ManagerListContract : ManagerListContractImplContainer.ManagerListContractImplBase
     {
+        private Address _superAdminAddress;
+        private Address _tokenContractAddress;
+        
         #region Action
 
         /**
@@ -20,16 +23,17 @@ namespace AElf.Contracts.ManagerList
          */
         public override Empty Initialize(StringValue superAdminAddress)
         {
-            Assert(!State.InitializeMethodLock.Value, "Initialize method has been called.");  // 已经执行过 Initialize 方法
+            Assert(!State.InitializeMethodLock.Value, "Initialize method has been called.");  // Initialize method has been called.
             
-            Address address = Address.FromBase58(superAdminAddress.Value);
-            State.ManagerBase[address] = new BoolValue { Value = true };
+            _superAdminAddress = Address.FromBase58(superAdminAddress.Value);
+            State.ManagerBase[_superAdminAddress] = new BoolValue { Value = true };
+
+            _tokenContractAddress = State.TokenContract.Value;
+            State.ManagerBase[_tokenContractAddress] = new BoolValue { Value = true };
             
             State.SuperAdminAddress.Value = superAdminAddress.Value;
-            
-            State.AllowFreeTransfer.Value = true;
-            
-            State.InitializeMethodLock.Value = true;  // 为 Initialize 方法加锁。
+            State.AllowFreeTransfer.Value = true;      // Allow free transfer.
+            State.InitializeMethodLock.Value = true;   // Lock the initialize method.
 
             return new Empty();
         }
@@ -112,9 +116,12 @@ namespace AElf.Contracts.ManagerList
         #region Action
         
         /**
-         * Set if allow free transfer.
+         * Set transfer mode
+         * param:
+         *  true:   allow free transfer
+         *  false:  not allow free transfer
          */
-        public override Empty SetAllowFreeTransfer(BoolValue allow)
+        public override Empty SetTransferMode(BoolValue allow)
         {
             // 1. validate initialize method
             Assert(State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
@@ -138,9 +145,12 @@ namespace AElf.Contracts.ManagerList
         }
         
         /**
-         * Get if allow free transfer.
+         * Get transfer mode.
+         * return:
+         *  true:  allow free transfer.
+         *  false: not allow free transfer.
          */
-        public override BoolValue GetAllowFreeTransfer(Empty empty)
+        public override BoolValue GetTransferMode(Empty empty)
         {
             if (State.AllowFreeTransfer.Value == true)
             {
@@ -153,17 +163,5 @@ namespace AElf.Contracts.ManagerList
         }
         
         #endregion
-
-        #region View
-        public override StringValue TestMySystemContract(StringValue stringValue)
-        {
-            
-            return new StringValue
-            {
-                Value = stringValue.Value
-            };
-        }
-        #endregion view
-        
     }
 }
