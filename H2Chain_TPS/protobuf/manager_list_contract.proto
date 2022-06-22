@@ -19,6 +19,10 @@ service ManagerListContract {
     rpc Initialize(google.protobuf.StringValue) returns (google.protobuf.Empty){
     }
 
+    rpc HasInitialized(google.protobuf.Empty) returns (google.protobuf.BoolValue) {
+        option (aelf.is_view) = true;
+    }
+
     rpc AddManager(google.protobuf.StringValue) returns (google.protobuf.Empty) {
     }
 

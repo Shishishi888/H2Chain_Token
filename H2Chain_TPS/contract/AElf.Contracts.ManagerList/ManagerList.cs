@@ -1,3 +1,4 @@
+using System;
 using AElf.Sdk.CSharp.State;
 using AElf.Types;
 using Google.Protobuf.WellKnownTypes;
@@ -34,10 +35,18 @@ namespace AElf.Contracts.ManagerList
             State.SuperAdminAddress.Value = superAdminAddress.Value;
             State.AllowFreeTransfer.Value = true;      // Allow free transfer.
             State.InitializeMethodLock.Value = true;   // Lock the initialize method.
-
+            
             return new Empty();
         }
-        
+
+        /**
+         * Check initialize method if has been called.
+         */
+        public override BoolValue HasInitialized(Empty empty)
+        {
+            return new BoolValue { Value = State.InitializeMethodLock.Value };
+        }
+
         /**
          * Add a manager to manager list.
          */

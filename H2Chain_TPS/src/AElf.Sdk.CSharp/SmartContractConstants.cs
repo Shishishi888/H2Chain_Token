@@ -21,7 +21,7 @@ namespace AElf.Sdk.CSharp
         public static readonly Hash AssociationContractSystemHashName = HashHelper.ComputeFrom("AElf.ContractNames.Association");
         public static readonly Hash ConfigurationContractSystemHashName = HashHelper.ComputeFrom("AElf.ContractNames.Configuration");
         public static readonly Hash TokenHolderContractSystemHashName = HashHelper.ComputeFrom("AElf.ContractNames.TokenHolder");
-        public static readonly Hash ManagerContractSystemHashName = HashHelper.ComputeFrom("AElf.ContractNames.ManagerList");
+        public static readonly Hash ManagerListContractSystemHashName = HashHelper.ComputeFrom("AElf.ContractNames.ManagerList");
 
 
         public static readonly string ElectionContractSystemName = GetStringName(ElectionContractSystemHashName);
@@ -38,7 +38,7 @@ namespace AElf.Sdk.CSharp
         public static readonly string AssociationContractSystemName = GetStringName(AssociationContractSystemHashName);
         public static readonly string ConfigurationContractSystemName = GetStringName(ConfigurationContractSystemHashName);
         public static readonly string TokenHolderContractSystemName = GetStringName(TokenHolderContractSystemHashName);
-        public static readonly string ManagerContractSystemName = GetStringName(ManagerContractSystemHashName);
+        public static readonly string ManagerListContractSystemName = GetStringName(ManagerListContractSystemHashName);
 
         
 

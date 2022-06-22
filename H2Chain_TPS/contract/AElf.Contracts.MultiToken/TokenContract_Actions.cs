@@ -133,20 +133,24 @@ namespace AElf.Contracts.MultiToken
             
             if (State.ManagerListContract.Value == null)
             {
-                State.ManagerListContract.Value = Context.GetContractAddressByName(SmartContractConstants.ManagerContractSystemName);
+                State.ManagerListContract.Value = Context.GetContractAddressByName(SmartContractConstants.ManagerListContractSystemName);
             }
-            var transferLock = State.ManagerListContract.GetTransferMode.Call(new Empty());
-            if (!transferLock.Value)  // not allow free transfer
+            
+            var initializeLock =  State.ManagerListContract.HasInitialized.Call(new Empty());  // The initialize method of ManagerList contract has been called.
+            if (initializeLock.Value)
             {
-                var bv1 = State.ManagerListContract.CheckManager.Call(new StringValue
-                    { Value = Context.Sender.ToBase58() });
+                var transferMode = State.ManagerListContract.GetTransferMode.Call(new Empty());
+                if (!transferMode.Value)  // not allow free transfer
+                {
+                    var bv1 = State.ManagerListContract.CheckManager.Call(new StringValue
+                        { Value = Context.Sender.ToBase58() });
                 
-                var bv2 = State.ManagerListContract.CheckManager.Call(new StringValue
-                    { Value = input.To.ToBase58() });
+                    var bv2 = State.ManagerListContract.CheckManager.Call(new StringValue
+                        { Value = input.To.ToBase58() });
                 
-                Assert(bv1.Value || bv2.Value, "Tranfer failed.");
+                    Assert(bv1.Value || bv2.Value, "Tranfer failed.");
+                }
             }
-
             DoTransfer(Context.Sender, input.To, input.Symbol, input.Amount, input.Memo);
             return new Empty();
         }
@@ -334,6 +338,26 @@ namespace AElf.Contracts.MultiToken
         {
             AssertValidToken(input.Symbol, input.Amount);
             // First check allowance.
+            
+            if (State.ManagerListContract.Value == null)
+            {
+                State.ManagerListContract.Value = Context.GetContractAddressByName(SmartContractConstants.ManagerListContractSystemName);
+            }
+            
+            var initializeLock =  State.ManagerListContract.HasInitialized.Call(new Empty());  // the initialize method of ManagerList contract has been called
+            if (initializeLock.Value)  
+            {
+                var transferMode = State.ManagerListContract.GetTransferMode.Call(new Empty());
+                if (!transferMode.Value)  // not allow free transfer
+                {
+                    var bv = State.ManagerListContract.CheckManager.Call(new StringValue
+                        { Value = Context.Sender.ToBase58() });
+
+                    Assert(bv.Value, "Tranfer failed.");
+                }
+            }
+
+            
             var allowance = State.Allowances[input.From][Context.Sender][input.Symbol];
             if (allowance < input.Amount)
             {
