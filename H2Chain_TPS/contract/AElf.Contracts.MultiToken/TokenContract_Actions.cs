@@ -136,7 +136,7 @@ namespace AElf.Contracts.MultiToken
                 State.ManagerListContract.Value = Context.GetContractAddressByName(SmartContractConstants.ManagerListContractSystemName);
             }
             
-            var initializeLock =  State.ManagerListContract.HasInitialized.Call(new Empty());  // The initialize method of ManagerList contract has been called.
+            var initializeLock =  State.ManagerListContract.HasInitialized.Call(new Empty());  // Check if the initialize method of ManagerList contract has been called.
             if (initializeLock.Value)
             {
                 var transferMode = State.ManagerListContract.GetTransferMode.Call(new Empty());
@@ -151,6 +151,7 @@ namespace AElf.Contracts.MultiToken
                     Assert(bv1.Value || bv2.Value, "Tranfer failed.");
                 }
             }
+            
             DoTransfer(Context.Sender, input.To, input.Symbol, input.Amount, input.Memo);
             return new Empty();
         }
@@ -344,7 +345,7 @@ namespace AElf.Contracts.MultiToken
                 State.ManagerListContract.Value = Context.GetContractAddressByName(SmartContractConstants.ManagerListContractSystemName);
             }
             
-            var initializeLock =  State.ManagerListContract.HasInitialized.Call(new Empty());  // the initialize method of ManagerList contract has been called
+            var initializeLock =  State.ManagerListContract.HasInitialized.Call(new Empty());  // Check if the initialize method of ManagerList contract has been called.
             if (initializeLock.Value)  
             {
                 var transferMode = State.ManagerListContract.GetTransferMode.Call(new Empty());
@@ -357,7 +358,6 @@ namespace AElf.Contracts.MultiToken
                 }
             }
 
-            
             var allowance = State.Allowances[input.From][Context.Sender][input.Symbol];
             if (allowance < input.Amount)
             {
