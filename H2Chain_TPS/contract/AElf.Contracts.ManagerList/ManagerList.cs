@@ -1,5 +1,3 @@
-using System;
-using AElf.Sdk.CSharp.State;
 using AElf.Types;
 using Google.Protobuf.WellKnownTypes;
 using AElf.Kernel;
@@ -14,7 +12,16 @@ namespace AElf.Contracts.ManagerList
     public  class ManagerListContract : ManagerListContractImplContainer.ManagerListContractImplBase
     {
         private Address _superAdminAddress;
+        
+        private Address _aedposContractAddress;
+        private Address _crossChainContractAddress;
+        private Address _electionContractAddress;
         private Address _tokenContractAddress;
+        private Address _profitContractAddress;
+        private Address _referendumContractAddress;
+        private Address _tokenConverterContractAddress;
+        private Address _tokenHolderContractAddress;
+        private Address _treasuryContractAddress;
         
         #region Action
 
@@ -26,15 +33,39 @@ namespace AElf.Contracts.ManagerList
         {
             Assert(!State.InitializeMethodLock.Value, "Initialize method has been called.");  // Initialize method has been called.
             
+            // 1. Add super admin address to manager list.
             _superAdminAddress = Address.FromBase58(superAdminAddress.Value);
             State.ManagerBase[_superAdminAddress] = new BoolValue { Value = true };
-
-            _tokenContractAddress = State.TokenContract.Value;
-            State.ManagerBase[_tokenContractAddress] = new BoolValue { Value = true };
             
+            // 2. Add system contract addresses to manager list.
+            _aedposContractAddress = State.AEDPoSContract.Value;
+            _crossChainContractAddress = State.CrossChainContract.Value;
+            _electionContractAddress = State.ElectionContract.Value;
+            _tokenContractAddress = State.TokenContract.Value;
+            _profitContractAddress = State.ProfitContract.Value;
+            _referendumContractAddress = State.ReferendumContract.Value;
+            _tokenConverterContractAddress = State.TokenConverterContract.Value;
+            _tokenHolderContractAddress = State.TokenHolderContract.Value;
+            _treasuryContractAddress = State.TreasuryContract.Value;
+            
+            State.ManagerBase[_aedposContractAddress] = new BoolValue { Value = true };
+            State.ManagerBase[_crossChainContractAddress] = new BoolValue { Value = true };
+            State.ManagerBase[_electionContractAddress] = new BoolValue { Value = true };
+            State.ManagerBase[_tokenContractAddress] = new BoolValue { Value = true };
+            State.ManagerBase[_profitContractAddress] = new BoolValue { Value = true };
+            State.ManagerBase[_referendumContractAddress] = new BoolValue { Value = true };
+            State.ManagerBase[_tokenConverterContractAddress] = new BoolValue { Value = true };
+            State.ManagerBase[_tokenHolderContractAddress] = new BoolValue { Value = true };
+            State.ManagerBase[_treasuryContractAddress] = new BoolValue { Value = true };
+            
+            // 3. Write the super admin address into state.
             State.SuperAdminAddress.Value = superAdminAddress.Value;
-            State.AllowFreeTransfer.Value = true;      // Allow free transfer.
-            State.InitializeMethodLock.Value = true;   // Lock the initialize method.
+            
+            // 4. Allow free transfer.
+            State.AllowFreeTransfer.Value = true; 
+            
+            // 5. Lock the initialize method.
+            State.InitializeMethodLock.Value = true;   
             
             return new Empty();
         }

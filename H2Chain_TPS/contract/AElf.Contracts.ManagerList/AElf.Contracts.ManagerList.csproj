@@ -10,16 +10,55 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-      <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-      <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+        <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     </PropertyGroup>
 
     <ItemGroup>
+        <CommonMessage Include="..\..\protobuf\acs3.proto">
+            <Link>Protobuf\Proto\acs3.proto</Link>
+        </CommonMessage>
+        <CommonMessage Include="..\..\protobuf\acs7.proto">
+            <Link>Protobuf\Proto\acs7.proto</Link>
+        </CommonMessage>
+        <CommonMessage Include="..\..\protobuf\authority_info.proto">
+            <Link>Protobuf\Proto\authority_info.proto</Link>
+        </CommonMessage>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ContractReference Include="..\..\protobuf\aedpos_contract.proto">
+            <Link>Protobuf\Proto\reference\aedpos_contract.proto</Link>
+        </ContractReference>
+        <ContractReference Include="..\..\protobuf\cross_chain_contract.proto">
+            <Link>Protobuf\Proto\reference\cross_chain_contract.proto</Link>
+        </ContractReference>
+        <ContractReference Include="..\..\protobuf\election_contract.proto">
+            <Link>Protobuf\Proto\reference\election_contract.proto</Link>
+        </ContractReference>
         <ContractReference Include="..\..\protobuf\token_contract.proto">
             <Link>Protobuf\Proto\reference\token_contract.proto</Link>
+        </ContractReference>
+        <ContractReference Include="..\..\protobuf\profit_contract.proto">
+            <Link>Protobuf\Proto\reference\profit_contract.proto</Link>
+        </ContractReference>
+        <ContractReference Include="..\..\protobuf\referendum_contract.proto">
+            <Link>Protobuf\Proto\reference\referendum_contract.proto</Link>
+        </ContractReference>
+        <ContractReference Include="..\..\protobuf\token_converter_contract.proto">
+            <Link>Protobuf\Proto\reference\token_converter_contract.proto</Link>
+        </ContractReference>
+        <ContractReference Include="..\..\protobuf\token_holder_contract.proto">
+            <Link>Protobuf\Proto\reference\token_holder_contract.proto</Link>
+        </ContractReference>
+        <ContractReference Include="..\..\protobuf\token_holder_contract.proto">
+            <Link>Protobuf\Proto\reference\token_holder_contract.proto</Link>
+        </ContractReference>
+        <ContractReference Include="..\..\protobuf\treasury_contract.proto">
+            <Link>Protobuf\Proto\reference\treasury_contract.proto</Link>
         </ContractReference>
     </ItemGroup>
 
@@ -35,3 +74,4 @@
         </ContractCode>
     </ItemGroup>
 </Project>
+
