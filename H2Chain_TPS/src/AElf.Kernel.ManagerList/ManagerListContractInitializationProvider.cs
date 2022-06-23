@@ -15,9 +15,7 @@ namespace AElf.Kernel.ManagerList
         
         public Hash SystemSmartContractName { get; } = ManagerListSmartContractAddressNameProvider.Name;
         public string ContractCodeName { get; } = "AElf.Contracts.ManagerList";
-
-        private readonly SuperAdminOptions _superAdminOptions;
-
+        
         public virtual List<ContractInitializationMethodCall> GetInitializeMethodList(byte[] contractCode)
         {
             // var methodList = new List<ContractInitializationMethodCall>();
