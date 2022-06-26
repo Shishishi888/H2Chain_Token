@@ -13,13 +13,16 @@ import "google/protobuf/wrappers.proto";
 option csharp_namespace = "AElf.Contracts.ManagerList";
 
 service ManagerListContract {
-    
+
     option (aelf.csharp_state) = "AElf.Contracts.ManagerList.ManagerListState";
-    
-    rpc Initialize(google.protobuf.StringValue) returns (google.protobuf.Empty){
+
+    rpc Initialize(google.protobuf.Empty) returns (google.protobuf.Empty){
     }
 
-    rpc HasInitialized(google.protobuf.Empty) returns (google.protobuf.BoolValue) {
+    rpc SetSuperAdminAddress(google.protobuf.StringValue) returns (google.protobuf.Empty) {
+    }
+
+    rpc HasSetSuperAdminAddress(google.protobuf.Empty) returns (google.protobuf.BoolValue) {
         option (aelf.is_view) = true;
     }
 
@@ -40,3 +43,4 @@ service ManagerListContract {
         option (aelf.is_view) = true;
     }
 }
+

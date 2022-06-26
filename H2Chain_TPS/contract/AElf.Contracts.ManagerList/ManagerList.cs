@@ -1,6 +1,7 @@
 using AElf.Types;
 using Google.Protobuf.WellKnownTypes;
 using AElf.Kernel;
+using AElf.Sdk.CSharp;
 
 /*
  * ManagerListContract
@@ -13,80 +14,78 @@ namespace AElf.Contracts.ManagerList
     {
         private Address _superAdminAddress;
         
-        private Address _aedposContractAddress;
-        private Address _crossChainContractAddress;
-        private Address _electionContractAddress;
-        private Address _tokenContractAddress;
-        private Address _profitContractAddress;
-        private Address _referendumContractAddress;
-        private Address _tokenConverterContractAddress;
-        private Address _tokenHolderContractAddress;
-        private Address _treasuryContractAddress;
-        
         #region Action
-
+        
         /**
          * Initialize function.
+         * Auto execute.
+         */
+        public override Empty Initialize(Empty empty)
+        {
+            State.AEDPoSContract.Value = Context.GetContractAddressByName(SmartContractConstants.ConsensusContractSystemName);
+            State.CrossChainContract.Value = Context.GetContractAddressByName(SmartContractConstants.CrossChainContractSystemName);
+            State.ElectionContract.Value = Context.GetContractAddressByName(SmartContractConstants.ElectionContractSystemName);
+            State.TokenContract.Value = Context.GetContractAddressByName(SmartContractConstants.TokenContractSystemName);
+            State.ProfitContract.Value = Context.GetContractAddressByName(SmartContractConstants.ProfitContractSystemName);
+            State.ReferendumContract.Value = Context.GetContractAddressByName(SmartContractConstants.ReferendumContractSystemName);
+            State.TokenConverterContract.Value = Context.GetContractAddressByName(SmartContractConstants.TokenConverterContractSystemName);
+            State.TokenHolderContract.Value = Context.GetContractAddressByName(SmartContractConstants.TokenHolderContractSystemName);
+            State.TreasuryContract.Value = Context.GetContractAddressByName(SmartContractConstants.TreasuryContractSystemName);
+            
+            State.ManagerBase[State.AEDPoSContract.Value] = new BoolValue { Value = true };
+            State.ManagerBase[State.CrossChainContract.Value] = new BoolValue { Value = true };
+            State.ManagerBase[State.ElectionContract.Value] = new BoolValue { Value = true };
+            State.ManagerBase[State.TokenContract.Value] = new BoolValue { Value = true };
+            State.ManagerBase[State.ProfitContract.Value] = new BoolValue { Value = true };
+            State.ManagerBase[State.ReferendumContract.Value] = new BoolValue { Value = true };
+            State.ManagerBase[State.TokenConverterContract.Value] = new BoolValue { Value = true };
+            State.ManagerBase[State.TokenHolderContract.Value] = new BoolValue { Value = true };
+            State.ManagerBase[State.TreasuryContract.Value] = new BoolValue { Value = true };
+            
+            State.SuperAdminAddressLock.Value = false; 
+            State.AllowFreeTransfer.Value = true;  // allow free transfer 
+            
+            return new Empty();
+        }
+        
+        /**
+         * Set super admin address.
          * Only can be called once.
          */
-        public override Empty Initialize(StringValue superAdminAddress)
+        public override Empty SetSuperAdminAddress(StringValue superAdminAddress)
         {
-            Assert(!State.InitializeMethodLock.Value, "Initialize method has been called.");  // Initialize method has been called.
+            Assert(!State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has been called.");  // Initialize method has been called.
             
-            // 1. Add super admin address to manager list.
-            _superAdminAddress = Address.FromBase58(superAdminAddress.Value);
-            State.ManagerBase[_superAdminAddress] = new BoolValue { Value = true };
-            
-            // 2. Add system contract addresses to manager list.
-            _aedposContractAddress = State.AEDPoSContract.Value;
-            _crossChainContractAddress = State.CrossChainContract.Value;
-            _electionContractAddress = State.ElectionContract.Value;
-            _tokenContractAddress = State.TokenContract.Value;
-            _profitContractAddress = State.ProfitContract.Value;
-            _referendumContractAddress = State.ReferendumContract.Value;
-            _tokenConverterContractAddress = State.TokenConverterContract.Value;
-            _tokenHolderContractAddress = State.TokenHolderContract.Value;
-            _treasuryContractAddress = State.TreasuryContract.Value;
-            
-            State.ManagerBase[_aedposContractAddress] = new BoolValue { Value = true };
-            State.ManagerBase[_crossChainContractAddress] = new BoolValue { Value = true };
-            State.ManagerBase[_electionContractAddress] = new BoolValue { Value = true };
-            State.ManagerBase[_tokenContractAddress] = new BoolValue { Value = true };
-            State.ManagerBase[_profitContractAddress] = new BoolValue { Value = true };
-            State.ManagerBase[_referendumContractAddress] = new BoolValue { Value = true };
-            State.ManagerBase[_tokenConverterContractAddress] = new BoolValue { Value = true };
-            State.ManagerBase[_tokenHolderContractAddress] = new BoolValue { Value = true };
-            State.ManagerBase[_treasuryContractAddress] = new BoolValue { Value = true };
-            
-            // 3. Write the super admin address into state.
+            // 1. Write the super admin address into state.
             State.SuperAdminAddress.Value = superAdminAddress.Value;
             
-            // 4. Allow free transfer.
-            State.AllowFreeTransfer.Value = true; 
-            
-            // 5. Lock the initialize method.
-            State.InitializeMethodLock.Value = true;   
+            // 2. Add super admin address to manager list.
+            _superAdminAddress = Address.FromBase58(superAdminAddress.Value);
+            State.ManagerBase[_superAdminAddress] = new BoolValue { Value = true };
+
+            // 3. Lock the SetSuperAdminAddress method.
+            State.SuperAdminAddressLock.Value = true;  
             
             return new Empty();
         }
 
         /**
-         * Check initialize method if has been called.
+         * Check if the SetSuperAdminAddress method has been called.
          */
-        public override BoolValue HasInitialized(Empty empty)
+        public override BoolValue HasSetSuperAdminAddress(Empty empty)
         {
-            return new BoolValue { Value = State.InitializeMethodLock.Value };
+            return new BoolValue { Value = State.SuperAdminAddressLock.Value };
         }
 
         /**
-         * Add a manager to manager list.
+         * Add a address to manager list.
          */
         public override  Empty AddManager(StringValue walletAddress)
         {
             Address address = Address.FromBase58(walletAddress.Value);
             
             // 1. validate initialize method
-            Assert(State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
+            Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
 
             // 2. validate sender
             Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
@@ -103,14 +102,14 @@ namespace AElf.Contracts.ManagerList
         }
 
         /**
-         * Remove a manager from manager list.
+         * Remove a address from manager list.
          */
         public override Empty RemoveManager(StringValue walletAddress)
         {
             Address address = Address.FromBase58(walletAddress.Value);
             
             // 1. validate initialize method
-            Assert(State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
+            Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
             
             // 2. validate sender
             Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
@@ -164,7 +163,7 @@ namespace AElf.Contracts.ManagerList
         public override Empty SetTransferMode(BoolValue allow)
         {
             // 1. validate initialize method
-            Assert(State.InitializeMethodLock.Value, "Initialize method has not been called yet.");
+            Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
             
             // 2. validate sender
             Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
@@ -172,14 +171,7 @@ namespace AElf.Contracts.ManagerList
             Assert(isSuperAdmin, "Invalid sender.");
             
             // 3. set if allow free transfer
-            if (allow.Value)
-            {
-                State.AllowFreeTransfer.Value = true;
-            }
-            else
-            {
-                State.AllowFreeTransfer.Value = false;
-            }
+            State.AllowFreeTransfer.Value = allow.Value;
 
             return new Empty();
         }
@@ -192,16 +184,13 @@ namespace AElf.Contracts.ManagerList
          */
         public override BoolValue GetTransferMode(Empty empty)
         {
-            if (State.AllowFreeTransfer.Value == true)
+            return new BoolValue
             {
-                return new BoolValue { Value = true };
-            }
-            else
-            {
-                return new BoolValue { Value = false };
-            }
+                Value = State.AllowFreeTransfer.Value
+            };
         }
         
         #endregion
     }
 }
+

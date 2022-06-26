@@ -136,7 +136,7 @@ namespace AElf.Contracts.MultiToken
                 State.ManagerListContract.Value = Context.GetContractAddressByName(SmartContractConstants.ManagerListContractSystemName);
             }
             
-            var initializeLock =  State.ManagerListContract.HasInitialized.Call(new Empty());  // Check if the initialize method of ManagerList contract has been called.
+            var initializeLock =  State.ManagerListContract.HasSetSuperAdminAddress.Call(new Empty());  // Check if the initialize method of ManagerList contract has been called.
             if (initializeLock.Value)
             {
                 var transferMode = State.ManagerListContract.GetTransferMode.Call(new Empty());
@@ -345,7 +345,7 @@ namespace AElf.Contracts.MultiToken
                 State.ManagerListContract.Value = Context.GetContractAddressByName(SmartContractConstants.ManagerListContractSystemName);
             }
             
-            var initializeLock =  State.ManagerListContract.HasInitialized.Call(new Empty());  // Check if the initialize method of ManagerList contract has been called.
+            var initializeLock =  State.ManagerListContract.HasSetSuperAdminAddress.Call(new Empty());  // Check if the initialize method of ManagerList contract has been called.
             if (initializeLock.Value)  
             {
                 var transferMode = State.ManagerListContract.GetTransferMode.Call(new Empty());
