@@ -267,15 +267,18 @@ namespace AElf.Contracts.Genesis
 
         public override Address DeploySmartContract(ContractDeploymentInput input)
         {
-            RequireSenderAuthority(State.CodeCheckController.Value?.OwnerAddress);
-            // AssertDeploymentProposerAuthority(Context.Origin);
+            // RequireSenderAuthority(State.CodeCheckController.Value?.OwnerAddress);
+            // // AssertDeploymentProposerAuthority(Context.Origin);
 
             var inputHash = CalculateHashFromInput(input);
-            TryClearContractProposingData(inputHash, out var contractProposingInput);
+            // TryClearContractProposingData(inputHash, out var contractProposingInput);
 
+            // var address =
+            //     DeploySmartContract(null, input.Category, input.Code.ToByteArray(), false,
+            //         DecideNonSystemContractAuthor(contractProposingInput?.Proposer, Context.Sender));
+            
             var address =
-                DeploySmartContract(null, input.Category, input.Code.ToByteArray(), false,
-                    DecideNonSystemContractAuthor(contractProposingInput?.Proposer, Context.Sender));
+                DeploySmartContract(null, input.Category, input.Code.ToByteArray(), false, Context.Sender);
             return address;
         }
 
