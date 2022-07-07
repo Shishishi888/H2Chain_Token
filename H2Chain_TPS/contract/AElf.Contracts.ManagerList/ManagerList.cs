@@ -191,6 +191,15 @@ namespace AElf.Contracts.ManagerList
         }
         
         #endregion
+        
+        public override StringValue TestMySystemContract(Empty empty)
+        {
+
+            return new StringValue
+            {
+                Value = "success"
+            };
+        }
     }
 }
 

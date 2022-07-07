@@ -42,5 +42,8 @@ service ManagerListContract {
     rpc GetTransferMode(google.protobuf.Empty) returns (google.protobuf.BoolValue) {
         option (aelf.is_view) = true;
     }
+
+    rpc TestMySystemContract(google.protobuf.Empty) returns (google.protobuf.StringValue) {
+    }
 }
 
