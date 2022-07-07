@@ -42,5 +42,8 @@ service ManagerListContract {
     rpc GetTransferMode(google.protobuf.Empty) returns (google.protobuf.BoolValue) {
         option (aelf.is_view) = true;
     }
+    
+    rpc AddContractAddressToBlackList(google.protobuf.StringValue) returns (google.protobuf.Empty) {
+    }
 }
 

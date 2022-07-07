@@ -191,6 +191,34 @@ namespace AElf.Contracts.ManagerList
         }
         
         #endregion
+
+        #region ContractAdressBlackList
+
+        /**
+         * Add an address to the black list.
+         */ 
+        public override Empty AddContractAddressToBlackList(StringValue walletAddress)
+        {
+            Address address = Address.FromBase58(walletAddress.Value);
+            
+            // 1. validate initialize method
+            Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
+
+            // 2. validate sender
+            Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
+            bool isSuperAdmin = Context.Sender == superAdminAddress;
+            Assert(isSuperAdmin, "Invalid sender.");
+
+            // 3. add an address to the black list
+            State.ContractAddressBlackList[address] = new BoolValue
+            {
+                Value = true
+            };
+
+            return new Empty();
+        }
+
+        #endregion
     }
 }
 

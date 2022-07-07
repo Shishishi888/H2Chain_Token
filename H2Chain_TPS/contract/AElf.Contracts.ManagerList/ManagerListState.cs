@@ -11,5 +11,6 @@ namespace AElf.Contracts.ManagerList
         public BoolState SuperAdminAddressLock { get; set; }
         public MappedState<Address, BoolValue> ManagerBase { get; set; }
         public BoolState AllowFreeTransfer { get; set; }
+        public MappedState<Address, BoolValue> ContractAddressBlackList { get; set; }
     }
 }
