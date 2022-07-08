@@ -48,5 +48,12 @@ service ManagerListContract {
     
     rpc AddContractAddressToBlackList(google.protobuf.StringValue) returns (google.protobuf.Empty) {
     }
+    
+    rpc RemoveContractAddressFromBlackList(google.protobuf.StringValue) returns (google.protobuf.Empty) {
+    }
+    
+    rpc CheckContractAddressInBlackList(google.protobuf.StringValue) returns (google.protobuf.BoolValue) {
+            option (aelf.is_view) = true;
+    }
 }
 

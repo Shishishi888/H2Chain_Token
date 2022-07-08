@@ -218,6 +218,54 @@ namespace AElf.Contracts.ManagerList
             return new Empty();
         }
 
+        /**
+         * Remove a address from the black list.
+         */
+        public override Empty RemoveContractAddressFromBlackList(StringValue walletAddress)
+        {
+            Address address = Address.FromBase58(walletAddress.Value);
+            
+            // 1. validate initialize method
+            Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
+            
+            // 2. validate sender
+            Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
+            bool isSuperAdmin = Context.Sender == superAdminAddress;
+            Assert(isSuperAdmin, "Invalid sender.");
+            
+            // 3. remove mananger from black list
+            if (State.ContractAddressBlackList[address] == null)
+            {
+                // do nothing
+            }
+            else
+            {
+                State.ContractAddressBlackList[address] = new BoolValue
+                {
+                    Value = false
+                };
+            }
+            return new Empty();
+        }
+
+        /**
+         * Check if a address is in the black list.
+         */
+        public override BoolValue CheckContractAddressInBlackList(StringValue walletAddress)
+        {
+            Address address = Address.FromBase58(walletAddress.Value);
+            
+            if (State.ContractAddressBlackList[address] != null && State.ContractAddressBlackList[address].Value == true)
+            {
+                return  new BoolValue { Value = true };
+            }
+            // if (State.Manager_Base[address] == null || State.Manager_Base[address].Value == false)
+            else
+            {
+               return  new BoolValue { Value = false };
+            }
+        }        
+        
         #endregion
         
         public override StringValue TestMySystemContract(Empty empty)
