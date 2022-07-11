@@ -12,6 +12,10 @@ import io.aelf.utils.ByteArrayHelper;
 import io.aelf.utils.Sha256;
 import org.bouncycastle.util.encoders.Hex;
 
+/**
+ * Author: ShiYang
+ * Date: 2022.07.01
+ */
 public class ContractCallTest {
     public static void main(String[] args) throws Exception {
         // create a new instance of AElf, change the URL if needed

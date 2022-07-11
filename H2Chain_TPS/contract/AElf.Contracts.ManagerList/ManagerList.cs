@@ -195,11 +195,11 @@ namespace AElf.Contracts.ManagerList
         #region ContractAdressBlackList
 
         /**
-         * Add an address to the black list.
+         * Add an contract address to the black list.
          */ 
-        public override Empty AddContractAddressToBlackList(StringValue walletAddress)
+        public override Empty AddContractAddressToBlackList(StringValue contractAddress)
         {
-            Address address = Address.FromBase58(walletAddress.Value);
+            Address address = Address.FromBase58(contractAddress.Value);
             
             // 1. validate initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
@@ -209,7 +209,7 @@ namespace AElf.Contracts.ManagerList
             bool isSuperAdmin = Context.Sender == superAdminAddress;
             Assert(isSuperAdmin, "Invalid sender.");
 
-            // 3. add an address to the black list
+            // 3. add the contract address to the black list
             State.ContractAddressBlackList[address] = new BoolValue
             {
                 Value = true
@@ -219,11 +219,11 @@ namespace AElf.Contracts.ManagerList
         }
 
         /**
-         * Remove a address from the black list.
+         * Remove a contract address from the black list.
          */
-        public override Empty RemoveContractAddressFromBlackList(StringValue walletAddress)
+        public override Empty RemoveContractAddressFromBlackList(StringValue contractAddress)
         {
-            Address address = Address.FromBase58(walletAddress.Value);
+            Address address = Address.FromBase58(contractAddress.Value);
             
             // 1. validate initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
@@ -233,7 +233,7 @@ namespace AElf.Contracts.ManagerList
             bool isSuperAdmin = Context.Sender == superAdminAddress;
             Assert(isSuperAdmin, "Invalid sender.");
             
-            // 3. remove mananger from black list
+            // 3. remove the contract address from black list
             if (State.ContractAddressBlackList[address] == null)
             {
                 // do nothing
@@ -249,11 +249,11 @@ namespace AElf.Contracts.ManagerList
         }
 
         /**
-         * Check if a address is in the black list.
+         * Check if a contract address is in the black list.
          */
-        public override BoolValue CheckContractAddressInBlackList(StringValue walletAddress)
+        public override BoolValue CheckContractAddressInBlackList(StringValue contractAddress)
         {
-            Address address = Address.FromBase58(walletAddress.Value);
+            Address address = Address.FromBase58(contractAddress.Value);
             
             if (State.ContractAddressBlackList[address] != null && State.ContractAddressBlackList[address].Value == true)
             {

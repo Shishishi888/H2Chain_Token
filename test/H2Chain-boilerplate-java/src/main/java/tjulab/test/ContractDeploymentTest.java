@@ -17,6 +17,10 @@ import org.bouncycastle.util.encoders.Hex;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * Author: ShiYang
+ * Date: 2022.07.05
+ */
 public class ContractDeploymentTest {
     public static void main(String[] args) throws Exception {
         // create a new instance of AElf, change the URL if needed
@@ -85,7 +89,8 @@ public class ContractDeploymentTest {
             transactionResult = client.getTransactionResult(sendResult.getTransactionId());
             System.out.println(transactionResult.getTransactionId());
             System.out.println(transactionResult.getReturnValue());
-            System.out.println(HexUtil.HexStringToString(transactionResult.getReturnValue()));
+            System.out.println(Hex.toHexString(transactionResult.getReturnValue().getBytes(StandardCharsets.UTF_8)));
+
         } catch (Exception e) {
             e.printStackTrace();
         }
