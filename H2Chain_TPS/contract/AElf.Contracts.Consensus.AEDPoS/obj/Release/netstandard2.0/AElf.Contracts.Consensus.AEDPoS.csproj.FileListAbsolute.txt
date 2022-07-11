@@ -44,3 +44,4 @@
 /root/ShiYangLab/H2Chain_Token/H2Chain_TPS/contract/AElf.Contracts.Consensus.AEDPoS/obj/Release/netstandard2.0/AElf.Contracts.Consensus.AEDPoS.csproj.CopyComplete
 /root/ShiYangLab/H2Chain_Token/H2Chain_TPS/contract/AElf.Contracts.Consensus.AEDPoS/obj/Release/netstandard2.0/AElf.Contracts.Consensus.AEDPoS.dll
 /root/ShiYangLab/H2Chain_Token/H2Chain_TPS/contract/AElf.Contracts.Consensus.AEDPoS/obj/Release/netstandard2.0/AElf.Contracts.Consensus.AEDPoS.pdb
+/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/contract/AElf.Contracts.Consensus.AEDPoS/obj/Release/netstandard2.0/AElf.Contracts.Consensus.AEDPoS.csprojAssemblyReference.cache
