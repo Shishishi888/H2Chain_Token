@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "dgSpecHash": "RMxvDwhkZnCwvBjUOMI0ilwaIU1HRx5qz7zRNFH+8dnIMx957DurGvZUBxOTWIvJCAP+wNo9FR8GxIvE2PTjgg==",
+  "success": true,
+  "projectFilePath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/contract/AElf.Contracts.CrossChain/AElf.Contracts.CrossChain.csproj",
+  "expectedPackageFiles": [
+    "/root/.nuget/packages/google.protobuf/3.13.0/google.protobuf.3.13.0.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.netcore.jit/1.0.2/microsoft.netcore.jit.1.0.2.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.netcore.portable.compatibility/1.0.1/microsoft.netcore.portable.compatibility.1.0.1.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.netcore.runtime.coreclr/1.0.2/microsoft.netcore.runtime.coreclr.1.0.2.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.netcore.windows.apisets/1.0.1/microsoft.netcore.windows.apisets.1.0.1.nupkg.sha512",
+    "/root/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/root/.nuget/packages/portable.bouncycastle/1.8.6.7/portable.bouncycastle.1.8.6.7.nupkg.sha512",
+    "/root/.nuget/packages/secp256k1.native/0.1.20/secp256k1.native.0.1.20.nupkg.sha512",
+    "/root/.nuget/packages/secp256k1.net/0.1.55/secp256k1.net.0.1.55.nupkg.sha512",
+    "/root/.nuget/packages/system.buffers/4.4.0/system.buffers.4.4.0.nupkg.sha512",
+    "/root/.nuget/packages/system.memory/4.5.2/system.memory.4.5.2.nupkg.sha512",
+    "/root/.nuget/packages/system.numerics.vectors/4.4.0/system.numerics.vectors.4.4.0.nupkg.sha512",
+    "/root/.nuget/packages/system.runtime.compilerservices.unsafe/4.5.2/system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "/root/.nuget/packages/virgil.crypto/2.4.10/virgil.crypto.2.4.10.nupkg.sha512",
+    "/root/.nuget/packages/virgil.cryptoapi/1.0.2/virgil.cryptoapi.1.0.2.nupkg.sha512",
+    "/root/.nuget/packages/aelf.cryptography/1.0.0/aelf.cryptography.1.0.0.nupkg.sha512",
+    "/root/.nuget/packages/aelf.csharp.core/1.0.0/aelf.csharp.core.1.0.0.nupkg.sha512",
+    "/root/.nuget/packages/aelf.kernel.smartcontract.shared/1.0.0/aelf.kernel.smartcontract.shared.1.0.0.nupkg.sha512",
+    "/root/.nuget/packages/aelf.sdk.csharp/1.0.0/aelf.sdk.csharp.1.0.0.nupkg.sha512",
+    "/root/.nuget/packages/aelf.types/1.0.0/aelf.types.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

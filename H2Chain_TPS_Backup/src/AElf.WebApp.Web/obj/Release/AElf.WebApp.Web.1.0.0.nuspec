@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AElf.WebApp.Web</id>
+    <version>1.0.0</version>
+    <authors>AElf.WebApp.Web</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://aelf.io/</projectUrl>
+    <description>Main module for the node's Web API.</description>
+    <repository type="git" url="https://github.com/AElfProject/AElf/" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="AElf.WebApp.Application.Chain" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.WebApp.Application.Net" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" version="4.1.1" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.Extensions.Primitives" version="3.1.7" exclude="Build,Analyzers" />
+        <dependency id="Swashbuckle.AspNetCore" version="5.5.1" exclude="Build,Analyzers" />
+        <dependency id="Volo.Abp.AspNetCore.Mvc" version="3.1.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.WebApp.Web/bin/Release/netcoreapp3.1/AElf.WebApp.Web.dll" target="lib/netcoreapp3.1/AElf.WebApp.Web.dll" />
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/LICENSE" target="LICENSE" />
+  </files>
+</package>

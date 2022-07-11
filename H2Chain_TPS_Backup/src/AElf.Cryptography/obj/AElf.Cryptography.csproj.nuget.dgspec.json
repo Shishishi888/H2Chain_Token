@@ -1,0 +1,138 @@
+{
+  "format": 1,
+  "restore": {
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/AElf.Cryptography.csproj": {}
+  },
+  "projects": {
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/AElf.Cryptography.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/AElf.Cryptography.csproj",
+        "projectName": "AElf.Cryptography",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/AElf.Cryptography.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Portable.BouncyCastle": {
+              "target": "Package",
+              "version": "[1.8.6.7, )"
+            },
+            "Secp256k1.Native": {
+              "target": "Package",
+              "version": "[0.1.20, )"
+            },
+            "Secp256k1.Net": {
+              "target": "Package",
+              "version": "[0.1.55, )"
+            },
+            "Virgil.Crypto": {
+              "target": "Package",
+              "version": "[2.4.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj",
+        "projectName": "AElf.Types",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.13.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

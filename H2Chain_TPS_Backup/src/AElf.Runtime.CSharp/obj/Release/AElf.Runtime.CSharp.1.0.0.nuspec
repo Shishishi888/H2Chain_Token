@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AElf.Runtime.CSharp</id>
+    <version>1.0.0</version>
+    <authors>AElf.Runtime.CSharp</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://aelf.io/</projectUrl>
+    <description>Primitives for the C# smart contracts runtime.</description>
+    <repository type="git" url="https://github.com/AElfProject/AElf/" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="AElf.CSharp.CodeOps" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Kernel.SmartContract" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Runtime.CSharp.Core" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Sdk.CSharp" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Mono.Cecil" version="0.11.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Runtime.CSharp/bin/Release/netcoreapp3.1/AElf.Runtime.CSharp.dll" target="lib/netcoreapp3.1/AElf.Runtime.CSharp.dll" />
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/LICENSE" target="LICENSE" />
+  </files>
+</package>

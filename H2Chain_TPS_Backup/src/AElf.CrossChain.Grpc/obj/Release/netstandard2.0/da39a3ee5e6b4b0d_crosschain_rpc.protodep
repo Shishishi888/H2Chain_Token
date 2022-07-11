@@ -1,0 +1,9 @@
+Protobuf/Generated/CrosschainRpc.cs \
+Protobuf/Generated/CrosschainRpcGrpc.cs: ../../protobuf/aelf/core.proto\
+ /root/.nuget/packages/grpc.tools/2.31.0/build/native/include/google/protobuf/descriptor.proto\
+ ../../protobuf/aelf/options.proto\
+ /root/.nuget/packages/grpc.tools/2.31.0/build/native/include/google/protobuf/empty.proto\
+ /root/.nuget/packages/grpc.tools/2.31.0/build/native/include/google/protobuf/wrappers.proto\
+ /root/.nuget/packages/grpc.tools/2.31.0/build/native/include/google/protobuf/timestamp.proto\
+ ../../protobuf/acs7.proto\
+ ../../protobuf/crosschain_rpc.proto

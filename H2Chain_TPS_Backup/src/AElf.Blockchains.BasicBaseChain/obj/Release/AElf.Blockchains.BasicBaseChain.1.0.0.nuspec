@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AElf.Blockchains.BasicBaseChain</id>
+    <version>1.0.0</version>
+    <authors>AElf.Blockchains.BasicBaseChain</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://aelf.io/</projectUrl>
+    <description>Base AElf Module for different chain types.</description>
+    <repository type="git" url="https://github.com/AElfProject/AElf/" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="AElf.Contracts.Genesis" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.CrossChain.Grpc" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.CrossChain" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.EconomicSystem" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.GovernmentSystem" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Kernel.Consensus.AEDPoS" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Kernel.ManagerList" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Kernel.SmartContract.ExecutionPluginForCallThreshold" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Kernel.SmartContract.ExecutionPluginForMethodFee" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Kernel.SmartContract.ExecutionPluginForResourceFee" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Kernel.SmartContract.Parallel" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Kernel.Token" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.OS" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Runtime.CSharp" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.RuntimeSetup" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.WebApp.Web" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Blockchains.BasicBaseChain/bin/Release/netcoreapp3.1/AElf.Blockchains.BasicBaseChain.dll" target="lib/netcoreapp3.1/AElf.Blockchains.BasicBaseChain.dll" />
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/LICENSE" target="LICENSE" />
+  </files>
+</package>

@@ -1,0 +1,6 @@
+Protobuf/Generated/PeerService.cs \
+Protobuf/Generated/PeerServiceGrpc.cs: /root/.nuget/packages/grpc.tools/2.31.0/build/native/include/google/protobuf/timestamp.proto\
+ ../../protobuf/aelf/core.proto\
+ ../../protobuf/kernel.proto\
+ ../../protobuf/network_types.proto\
+ ../../protobuf/peer_service.proto

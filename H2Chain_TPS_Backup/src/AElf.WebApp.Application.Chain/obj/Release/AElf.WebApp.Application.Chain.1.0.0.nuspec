@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AElf.WebApp.Application.Chain</id>
+    <version>1.0.0</version>
+    <authors>AElf.WebApp.Application.Chain</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://aelf.io/</projectUrl>
+    <description>Web API service for the chain layer.</description>
+    <repository type="git" url="https://github.com/AElfProject/AElf/" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="AElf.Kernel.TransactionPool" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Kernel" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.WebApp.Application.Core" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="Volo.Abp.AspNetCore.Mvc" version="3.1.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.WebApp.Application.Chain/bin/Release/netcoreapp3.1/AElf.WebApp.Application.Chain.dll" target="lib/netcoreapp3.1/AElf.WebApp.Application.Chain.dll" />
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.WebApp.Application.Chain/bin/Release/netcoreapp3.1/AElf.WebApp.Application.Chain.xml" target="lib/netcoreapp3.1/AElf.WebApp.Application.Chain.xml" />
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/LICENSE" target="LICENSE" />
+  </files>
+</package>

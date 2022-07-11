@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AElf.CrossChain</id>
+    <version>1.0.0</version>
+    <authors>AElf.CrossChain</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Main functionality for crosschain operations.</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="AElf.CrossChain.Core" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.CrossChain/bin/Release/netstandard2.0/AElf.CrossChain.dll" target="lib/netstandard2.0/AElf.CrossChain.dll" />
+  </files>
+</package>

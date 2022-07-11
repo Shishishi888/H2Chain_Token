@@ -1,0 +1,880 @@
+{
+  "format": 1,
+  "restore": {
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.AEDPoS/AElf.Kernel.Consensus.AEDPoS.csproj": {}
+  },
+  "projects": {
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.CSharp.Core/AElf.CSharp.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.CSharp.Core/AElf.CSharp.Core.csproj",
+        "projectName": "AElf.CSharp.Core",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.CSharp.Core/AElf.CSharp.Core.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.CSharp.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.CSharp": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/AElf.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/AElf.Core.csproj",
+        "projectName": "AElf.Core",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/AElf.Core.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "System.Threading.Tasks.Dataflow": {
+              "target": "Package",
+              "version": "[4.11.1, )"
+            },
+            "Volo.Abp.Core": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/AElf.Cryptography.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/AElf.Cryptography.csproj",
+        "projectName": "AElf.Cryptography",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/AElf.Cryptography.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Portable.BouncyCastle": {
+              "target": "Package",
+              "version": "[1.8.6.7, )"
+            },
+            "Secp256k1.Native": {
+              "target": "Package",
+              "version": "[0.1.20, )"
+            },
+            "Secp256k1.Net": {
+              "target": "Package",
+              "version": "[0.1.55, )"
+            },
+            "Virgil.Crypto": {
+              "target": "Package",
+              "version": "[2.4.10, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Database/AElf.Database.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Database/AElf.Database.csproj",
+        "projectName": "AElf.Database",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Database/AElf.Database.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Database/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/AElf.Core.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/AElf.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Volo.Abp.Data": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Configuration/AElf.Kernel.Configuration.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Configuration/AElf.Kernel.Configuration.csproj",
+        "projectName": "AElf.Kernel.Configuration",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Configuration/AElf.Kernel.Configuration.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Configuration/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract/AElf.Kernel.SmartContract.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract/AElf.Kernel.SmartContract.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.AEDPoS/AElf.Kernel.Consensus.AEDPoS.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.AEDPoS/AElf.Kernel.Consensus.AEDPoS.csproj",
+        "projectName": "AElf.Kernel.Consensus.AEDPoS",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.AEDPoS/AElf.Kernel.Consensus.AEDPoS.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.AEDPoS/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Scheduler.RxNet/AElf.Kernel.Consensus.Scheduler.RxNet.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Scheduler.RxNet/AElf.Kernel.Consensus.Scheduler.RxNet.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.Extensions.Caching.Memory": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Core/AElf.Kernel.Consensus.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Core/AElf.Kernel.Consensus.Core.csproj",
+        "projectName": "AElf.Kernel.Consensus.Core",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Core/AElf.Kernel.Consensus.Core.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContractExecution/AElf.Kernel.SmartContractExecution.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContractExecution/AElf.Kernel.SmartContractExecution.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Scheduler.RxNet/AElf.Kernel.Consensus.Scheduler.RxNet.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Scheduler.RxNet/AElf.Kernel.Consensus.Scheduler.RxNet.csproj",
+        "projectName": "AElf.Kernel.Consensus.Scheduler.RxNet",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Scheduler.RxNet/AElf.Kernel.Consensus.Scheduler.RxNet.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Scheduler.RxNet/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Core/AElf.Kernel.Consensus.Core.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Consensus.Core/AElf.Kernel.Consensus.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "System.Reactive": {
+              "target": "Package",
+              "version": "[4.4.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Core/AElf.Kernel.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Core/AElf.Kernel.Core.csproj",
+        "projectName": "AElf.Kernel.Core",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Core/AElf.Kernel.Core.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.CSharp.Core/AElf.CSharp.Core.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.CSharp.Core/AElf.CSharp.Core.csproj"
+              },
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/AElf.Cryptography.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/AElf.Cryptography.csproj"
+              },
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Database/AElf.Database.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Database/AElf.Database.csproj"
+              },
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Types/AElf.Kernel.Types.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Types/AElf.Kernel.Types.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            },
+            "Volo.Abp.EventBus": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract.Shared/AElf.Kernel.SmartContract.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract.Shared/AElf.Kernel.SmartContract.Shared.csproj",
+        "projectName": "AElf.Kernel.SmartContract.Shared",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract.Shared/AElf.Kernel.SmartContract.Shared.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract.Shared/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract/AElf.Kernel.SmartContract.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract/AElf.Kernel.SmartContract.csproj",
+        "projectName": "AElf.Kernel.SmartContract",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract/AElf.Kernel.SmartContract.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.CSharp.Core/AElf.CSharp.Core.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.CSharp.Core/AElf.CSharp.Core.csproj"
+              },
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Core/AElf.Kernel.Core.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Core/AElf.Kernel.Core.csproj"
+              },
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract.Shared/AElf.Kernel.SmartContract.Shared.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract.Shared/AElf.Kernel.SmartContract.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "Sandwych.QuickGraph.Core": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContractExecution/AElf.Kernel.SmartContractExecution.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContractExecution/AElf.Kernel.SmartContractExecution.csproj",
+        "projectName": "AElf.Kernel.SmartContractExecution",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContractExecution/AElf.Kernel.SmartContractExecution.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContractExecution/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Configuration/AElf.Kernel.Configuration.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Configuration/AElf.Kernel.Configuration.csproj"
+              },
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract/AElf.Kernel.SmartContract.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.SmartContract/AElf.Kernel.SmartContract.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Types/AElf.Kernel.Types.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Types/AElf.Kernel.Types.csproj",
+        "projectName": "AElf.Kernel.Types",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Types/AElf.Kernel.Types.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.Types/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj": {
+                "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj",
+        "projectName": "AElf.Types",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/AElf.Types.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Types/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Google.Protobuf": {
+              "target": "Package",
+              "version": "[3.13.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

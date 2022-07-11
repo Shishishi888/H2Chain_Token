@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AElf.Runtime.CSharp.Core</id>
+    <version>1.0.0</version>
+    <authors>AElf.Runtime.CSharp.Core</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://aelf.io/</projectUrl>
+    <description>Core elements of C# smart contracts.</description>
+    <repository type="git" url="https://github.com/AElfProject/AElf/" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="Hyperion" version="0.9.16" exclude="Build,Analyzers" />
+        <dependency id="Mono.Cecil" version="0.11.2" exclude="Build,Analyzers" />
+        <dependency id="Unofficial.CoreRT.ILVerify" version="0.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/root/ShiYangLab/H2Chain_TPS/src/AElf.Runtime.CSharp.Core/bin/Release/netcoreapp3.1/AElf.Runtime.CSharp.Core.dll" target="lib/netcoreapp3.1/AElf.Runtime.CSharp.Core.dll" />
+    <file src="/root/ShiYangLab/H2Chain_TPS/LICENSE" target="LICENSE" />
+  </files>
+</package>

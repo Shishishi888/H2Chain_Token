@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "2/hbvO0FzQNh/P8V4y5yRZ5MRuqi/ceoBv9/KTqqzyfUjP2Zc8kk7vgVySjYDKV5/I6ovo7l75vbZJDOwD9EcA==",
+  "success": true,
+  "projectFilePath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Cryptography/AElf.Cryptography.csproj",
+  "expectedPackageFiles": [
+    "/root/.nuget/packages/google.protobuf/3.13.0/google.protobuf.3.13.0.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.netcore.jit/1.0.2/microsoft.netcore.jit.1.0.2.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.netcore.portable.compatibility/1.0.1/microsoft.netcore.portable.compatibility.1.0.1.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.netcore.runtime.coreclr/1.0.2/microsoft.netcore.runtime.coreclr.1.0.2.nupkg.sha512",
+    "/root/.nuget/packages/microsoft.netcore.windows.apisets/1.0.1/microsoft.netcore.windows.apisets.1.0.1.nupkg.sha512",
+    "/root/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/root/.nuget/packages/portable.bouncycastle/1.8.6.7/portable.bouncycastle.1.8.6.7.nupkg.sha512",
+    "/root/.nuget/packages/secp256k1.native/0.1.20/secp256k1.native.0.1.20.nupkg.sha512",
+    "/root/.nuget/packages/secp256k1.net/0.1.55/secp256k1.net.0.1.55.nupkg.sha512",
+    "/root/.nuget/packages/system.buffers/4.4.0/system.buffers.4.4.0.nupkg.sha512",
+    "/root/.nuget/packages/system.memory/4.5.2/system.memory.4.5.2.nupkg.sha512",
+    "/root/.nuget/packages/system.numerics.vectors/4.4.0/system.numerics.vectors.4.4.0.nupkg.sha512",
+    "/root/.nuget/packages/system.runtime.compilerservices.unsafe/4.5.2/system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "/root/.nuget/packages/virgil.crypto/2.4.10/virgil.crypto.2.4.10.nupkg.sha512",
+    "/root/.nuget/packages/virgil.cryptoapi/1.0.2/virgil.cryptoapi.1.0.2.nupkg.sha512",
+    "/root/.nuget/packages/aelf.types/1.0.0/aelf.types.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

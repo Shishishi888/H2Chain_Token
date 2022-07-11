@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>AElf.Contracts.ManagerList</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>0436</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.msbuild" Version="2.5.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
+    <PackageReference Include="Shouldly" Version="3.0.2" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.console" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ContractMessage Include="..\..\protobuf\authority_info.proto">
+      <Link>Protobuf\Proto\authority_info.proto</Link>
+    </ContractMessage>
+  </ItemGroup>
+  <ItemGroup>
+    <ContractStub Include="..\..\protobuf\manager_list_contract.proto">
+      <Link>Protobuf\Proto\manager_list_contract.proto</Link>
+    </ContractStub>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AElf.ContractTestBase\AElf.ContractTestBase.csproj" />
+    <ProjectReference Include="..\AElf.Contracts.TestBase\AElf.Contracts.TestBase.csproj" />
+  </ItemGroup>
+  <Import Project="..\..\test\AllContracts.props" />
+</Project>

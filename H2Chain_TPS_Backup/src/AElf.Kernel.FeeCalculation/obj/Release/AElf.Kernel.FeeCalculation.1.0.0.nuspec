@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AElf.Kernel.FeeCalculation</id>
+    <version>1.0.0</version>
+    <authors>AElf.Kernel.FeeCalculation</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Fee Calculation Project.</description>
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="AElf.Kernel.SmartContract" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Kernel.Token" version="1.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Kernel.FeeCalculation/bin/Release/netstandard2.0/AElf.Kernel.FeeCalculation.dll" target="lib/netstandard2.0/AElf.Kernel.FeeCalculation.dll" />
+  </files>
+</package>

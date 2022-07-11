@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AElf.ContractDeployer</id>
+    <version>1.0.0</version>
+    <authors>AElf.ContractDeployer</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="file">LICENSE</license>
+    <licenseUrl>https://aka.ms/deprecateLicenseUrl</licenseUrl>
+    <projectUrl>https://aelf.io/</projectUrl>
+    <description>Smart contract deployer.</description>
+    <repository type="git" url="https://github.com/AElfProject/AElf/" />
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="AElf.CSharp.CodeOps" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Runtime.CSharp.Core" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="AElf.Types" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="CommandLineParser" version="2.8.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.ContractDeployer/bin/Release/netcoreapp3.1/AElf.ContractDeployer.runtimeconfig.json" target="lib/netcoreapp3.1/AElf.ContractDeployer.runtimeconfig.json" />
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.ContractDeployer/bin/Release/netcoreapp3.1/AElf.ContractDeployer.dll" target="lib/netcoreapp3.1/AElf.ContractDeployer.dll" />
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/LICENSE" target="LICENSE" />
+    <file src="/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.ContractDeployer/AElf.ContractDeployer.targets" target="build//AElf.ContractDeployer.targets" />
+  </files>
+</package>

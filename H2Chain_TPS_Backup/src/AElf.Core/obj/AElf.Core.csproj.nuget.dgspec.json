@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "restore": {
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/AElf.Core.csproj": {}
+  },
+  "projects": {
+    "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/AElf.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/AElf.Core.csproj",
+        "projectName": "AElf.Core",
+        "projectPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/AElf.Core.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/root/ShiYangLab/H2Chain_Token/H2Chain_TPS/src/AElf.Core/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.Extensions.Logging": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "System.Threading.Tasks.Dataflow": {
+              "target": "Package",
+              "version": "[4.11.1, )"
+            },
+            "Volo.Abp.Core": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.415/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
