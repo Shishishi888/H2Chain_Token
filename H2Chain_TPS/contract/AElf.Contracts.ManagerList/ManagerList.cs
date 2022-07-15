@@ -32,15 +32,15 @@ namespace AElf.Contracts.ManagerList
             State.TokenHolderContract.Value = Context.GetContractAddressByName(SmartContractConstants.TokenHolderContractSystemName);
             State.TreasuryContract.Value = Context.GetContractAddressByName(SmartContractConstants.TreasuryContractSystemName);
             
-            State.ManagerBase[State.AEDPoSContract.Value] = new BoolValue { Value = true };
-            State.ManagerBase[State.CrossChainContract.Value] = new BoolValue { Value = true };
-            State.ManagerBase[State.ElectionContract.Value] = new BoolValue { Value = true };
-            State.ManagerBase[State.TokenContract.Value] = new BoolValue { Value = true };
-            State.ManagerBase[State.ProfitContract.Value] = new BoolValue { Value = true };
-            State.ManagerBase[State.ReferendumContract.Value] = new BoolValue { Value = true };
-            State.ManagerBase[State.TokenConverterContract.Value] = new BoolValue { Value = true };
-            State.ManagerBase[State.TokenHolderContract.Value] = new BoolValue { Value = true };
-            State.ManagerBase[State.TreasuryContract.Value] = new BoolValue { Value = true };
+            State.ManagerList[State.AEDPoSContract.Value] = new BoolValue { Value = true };
+            State.ManagerList[State.CrossChainContract.Value] = new BoolValue { Value = true };
+            State.ManagerList[State.ElectionContract.Value] = new BoolValue { Value = true };
+            State.ManagerList[State.TokenContract.Value] = new BoolValue { Value = true };
+            State.ManagerList[State.ProfitContract.Value] = new BoolValue { Value = true };
+            State.ManagerList[State.ReferendumContract.Value] = new BoolValue { Value = true };
+            State.ManagerList[State.TokenConverterContract.Value] = new BoolValue { Value = true };
+            State.ManagerList[State.TokenHolderContract.Value] = new BoolValue { Value = true };
+            State.ManagerList[State.TreasuryContract.Value] = new BoolValue { Value = true };
             
             State.SuperAdminAddressLock.Value = false; 
             State.AllowFreeTransfer.Value = true;  // allow free transfer 
@@ -52,22 +52,23 @@ namespace AElf.Contracts.ManagerList
          * Set super admin address.
          * Only can be called once.
          */
-        public override Empty SetSuperAdminAddress(StringValue superAdminAddress)
+        public override Empty SetSuperAdminAddress(Address superAdminAddress)
         {
             Assert(!State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has been called.");  // Initialize method has been called.
             
             // 1. Write the super admin address into state.
-            State.SuperAdminAddress.Value = superAdminAddress.Value;
+            State.SuperAdminAddress.Value = superAdminAddress;
             
             // 2. Add super admin address to manager list.
-            _superAdminAddress = Address.FromBase58(superAdminAddress.Value);
-            State.ManagerBase[_superAdminAddress] = new BoolValue { Value = true };
+            State.ManagerList[superAdminAddress] = new BoolValue { Value = true };
 
             // 3. Lock the SetSuperAdminAddress method.
             State.SuperAdminAddressLock.Value = true;  
             
             return new Empty();
         }
+
+        #endregion
 
         /**
          * Check if the SetSuperAdminAddress method has been called.
@@ -78,22 +79,21 @@ namespace AElf.Contracts.ManagerList
         }
 
         /**
-         * Add a address to manager list.
+         * Add the address to manager list.
          */
-        public override  Empty AddManager(StringValue walletAddress)
+        public override  Empty AddManager(Address address)
         {
-            Address address = Address.FromBase58(walletAddress.Value);
+            // Address address = Address.FromBase58(walletAddress.Value);
             
             // 1. validate initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
 
-            // 2. validate sender
-            Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
-            bool isSuperAdmin = Context.Sender == superAdminAddress;
+            // 2. validate the sender's identity
+            bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
 
-            // 3. add a mananger to manager list
-            State.ManagerBase[address] = new BoolValue
+            // 3. add the address to manager list
+            State.ManagerList[address] = new BoolValue
             {
                 Value = true
             };
@@ -102,28 +102,25 @@ namespace AElf.Contracts.ManagerList
         }
 
         /**
-         * Remove a address from manager list.
+         * Remove the address from manager list.
          */
-        public override Empty RemoveManager(StringValue walletAddress)
-        {
-            Address address = Address.FromBase58(walletAddress.Value);
-            
+        public override Empty RemoveManager(Address address)
+        {   
             // 1. validate initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
             
-            // 2. validate sender
-            Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
-            bool isSuperAdmin = Context.Sender == superAdminAddress;
+            // 2. validate the sender's identity
+            bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
             
-            // 3. remove mananger from manager list
-            if (State.ManagerBase[address] == null)
+            // 3. remove the address from manager list
+            if (State.ManagerList[address] == null)
             {
                 // do nothing
             }
             else
             {
-                State.ManagerBase[address] = new BoolValue
+                State.ManagerList[address] = new BoolValue
                 {
                     Value = false
                 };
@@ -134,11 +131,9 @@ namespace AElf.Contracts.ManagerList
         /**
          * Check if a address is in ManagerList
          */
-        public override BoolValue CheckManager(StringValue walletAddress)
-        {
-            Address address = Address.FromBase58(walletAddress.Value);
-            
-            if (State.ManagerBase[address] != null && State.ManagerBase[address].Value == true)
+        public override BoolValue CheckManager(Address address)
+        {            
+            if (State.ManagerList[address] != null && State.ManagerList[address].Value == true)
             {
                 return  new BoolValue { Value = true };
             }
@@ -149,7 +144,7 @@ namespace AElf.Contracts.ManagerList
             }
         }
         
-        #endregion
+        // #endregion
 
         
         #region Action
@@ -165,9 +160,8 @@ namespace AElf.Contracts.ManagerList
             // 1. validate initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
             
-            // 2. validate sender
-            Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
-            bool isSuperAdmin = Context.Sender == superAdminAddress;
+            // 2. validate the sender's identity
+            bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
             
             // 3. set if allow free transfer
@@ -195,18 +189,15 @@ namespace AElf.Contracts.ManagerList
         #region ContractAdressBlackList
 
         /**
-         * Add an contract address to the black list.
+         * Add the contract address to the black list.
          */ 
-        public override Empty AddContractAddressToBlackList(StringValue contractAddress)
-        {
-            Address address = Address.FromBase58(contractAddress.Value);
-            
-            // 1. validate initialize method
+        public override Empty AddContractAddressToBlackList(Address address)
+        {    
+            // 1. validate the initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
 
-            // 2. validate sender
-            Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
-            bool isSuperAdmin = Context.Sender == superAdminAddress;
+            // 2. validate the sender's identity
+            bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
 
             // 3. add the contract address to the black list
@@ -219,18 +210,15 @@ namespace AElf.Contracts.ManagerList
         }
 
         /**
-         * Remove a contract address from the black list.
+         * Remove the contract address from the black list.
          */
-        public override Empty RemoveContractAddressFromBlackList(StringValue contractAddress)
-        {
-            Address address = Address.FromBase58(contractAddress.Value);
-            
+        public override Empty RemoveContractAddressFromBlackList(Address address)
+        {   
             // 1. validate initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
             
             // 2. validate sender
-            Address superAdminAddress = Address.FromBase58(State.SuperAdminAddress.Value);
-            bool isSuperAdmin = Context.Sender == superAdminAddress;
+            bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
             
             // 3. remove the contract address from black list
@@ -249,12 +237,10 @@ namespace AElf.Contracts.ManagerList
         }
 
         /**
-         * Check if a contract address is in the black list.
+         * Check if the contract address is in the black list.
          */
-        public override BoolValue CheckContractAddressInBlackList(StringValue contractAddress)
+        public override BoolValue CheckContractAddressInBlackList(Address address)
         {
-            Address address = Address.FromBase58(contractAddress.Value);
-            
             if (State.ContractAddressBlackList[address] != null && State.ContractAddressBlackList[address].Value == true)
             {
                 return  new BoolValue { Value = true };

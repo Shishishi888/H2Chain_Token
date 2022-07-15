@@ -19,20 +19,20 @@ service ManagerListContract {
     rpc Initialize(google.protobuf.Empty) returns (google.protobuf.Empty){
     }
 
-    rpc SetSuperAdminAddress(google.protobuf.StringValue) returns (google.protobuf.Empty) {
+    rpc SetSuperAdminAddress(aelf.Address) returns (google.protobuf.Empty) {
     }
 
     rpc HasSetSuperAdminAddress(google.protobuf.Empty) returns (google.protobuf.BoolValue) {
         option (aelf.is_view) = true;
     }
 
-    rpc AddManager(google.protobuf.StringValue) returns (google.protobuf.Empty) {
+    rpc AddManager(aelf.Address) returns (google.protobuf.Empty) {
     }
 
-    rpc RemoveManager(google.protobuf.StringValue) returns (google.protobuf.Empty) {
+    rpc RemoveManager(aelf.Address) returns (google.protobuf.Empty) {
     }
 
-    rpc CheckManager(google.protobuf.StringValue) returns (google.protobuf.BoolValue) {
+    rpc CheckManager(aelf.Address) returns (google.protobuf.BoolValue) {
         option (aelf.is_view) = true;
     }
 
@@ -44,16 +44,16 @@ service ManagerListContract {
     }
 
     rpc TestMySystemContract(google.protobuf.Empty) returns (google.protobuf.StringValue) {
-        option (aelf.is_view) = true;
+        // option (aelf.is_view) = true;
     }
     
-    rpc AddContractAddressToBlackList(google.protobuf.StringValue) returns (google.protobuf.Empty) {
+    rpc AddContractAddressToBlackList(aelf.Address) returns (google.protobuf.Empty) {
     }
     
-    rpc RemoveContractAddressFromBlackList(google.protobuf.StringValue) returns (google.protobuf.Empty) {
+    rpc RemoveContractAddressFromBlackList(aelf.Address) returns (google.protobuf.Empty) {
     }
     
-    rpc CheckContractAddressInBlackList(google.protobuf.StringValue) returns (google.protobuf.BoolValue) {
+    rpc CheckContractAddressInBlackList(aelf.Address) returns (google.protobuf.BoolValue) {
             option (aelf.is_view) = true;
     }
 }

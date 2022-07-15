@@ -139,11 +139,9 @@ namespace AElf.Contracts.MultiToken
             var transferMode = State.ManagerListContract.GetTransferMode.Call(new Empty());
             if (!transferMode.Value)  // not allow free transfer
             {
-                var bv1 = State.ManagerListContract.CheckManager.Call(new StringValue
-                    { Value = Context.Sender.ToBase58() });
+                var bv1 = State.ManagerListContract.CheckManager.Call(Context.Sender);
             
-                var bv2 = State.ManagerListContract.CheckManager.Call(new StringValue
-                    { Value = input.To.ToBase58() });
+                var bv2 = State.ManagerListContract.CheckManager.Call(input.To);
             
                 Assert(bv1.Value || bv2.Value, "Tranfer failed.");
             }
@@ -344,8 +342,7 @@ namespace AElf.Contracts.MultiToken
             var transferMode = State.ManagerListContract.GetTransferMode.Call(new Empty());
             if (!transferMode.Value)  // not allow free transfer
             {
-                var bv = State.ManagerListContract.CheckManager.Call(new StringValue
-                    { Value = Context.Sender.ToBase58() });
+                var bv = State.ManagerListContract.CheckManager.Call(Context.Sender);
 
                 Assert(bv.Value, "Tranfer failed.");
             }

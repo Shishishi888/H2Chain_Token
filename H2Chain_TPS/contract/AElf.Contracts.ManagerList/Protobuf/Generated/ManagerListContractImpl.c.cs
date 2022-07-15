@@ -22,8 +22,9 @@ namespace AElf.Contracts.ManagerList {
 
     #region Marshallers
     static readonly aelf::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = aelf::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.Empty.Parser.ParseFrom);
-    static readonly aelf::Marshaller<global::Google.Protobuf.WellKnownTypes.StringValue> __Marshaller_google_protobuf_StringValue = aelf::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.StringValue.Parser.ParseFrom);
+    static readonly aelf::Marshaller<global::AElf.Types.Address> __Marshaller_aelf_Address = aelf::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::AElf.Types.Address.Parser.ParseFrom);
     static readonly aelf::Marshaller<global::Google.Protobuf.WellKnownTypes.BoolValue> __Marshaller_google_protobuf_BoolValue = aelf::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.BoolValue.Parser.ParseFrom);
+    static readonly aelf::Marshaller<global::Google.Protobuf.WellKnownTypes.StringValue> __Marshaller_google_protobuf_StringValue = aelf::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Google.Protobuf.WellKnownTypes.StringValue.Parser.ParseFrom);
     #endregion
 
     #region Methods
@@ -34,11 +35,11 @@ namespace AElf.Contracts.ManagerList {
         __Marshaller_google_protobuf_Empty,
         __Marshaller_google_protobuf_Empty);
 
-    static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.Empty> __Method_SetSuperAdminAddress = new aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.Empty>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_SetSuperAdminAddress = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
         aelf::MethodType.Action,
         __ServiceName,
         "SetSuperAdminAddress",
-        __Marshaller_google_protobuf_StringValue,
+        __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
     static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_HasSetSuperAdminAddress = new aelf::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::Google.Protobuf.WellKnownTypes.BoolValue>(
@@ -48,25 +49,25 @@ namespace AElf.Contracts.ManagerList {
         __Marshaller_google_protobuf_Empty,
         __Marshaller_google_protobuf_BoolValue);
 
-    static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.Empty> __Method_AddManager = new aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.Empty>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_AddManager = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
         aelf::MethodType.Action,
         __ServiceName,
         "AddManager",
-        __Marshaller_google_protobuf_StringValue,
+        __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
-    static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveManager = new aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.Empty>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveManager = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
         aelf::MethodType.Action,
         __ServiceName,
         "RemoveManager",
-        __Marshaller_google_protobuf_StringValue,
+        __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
-    static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckManager = new aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.BoolValue>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckManager = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue>(
         aelf::MethodType.View,
         __ServiceName,
         "CheckManager",
-        __Marshaller_google_protobuf_StringValue,
+        __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_BoolValue);
 
     static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.BoolValue, global::Google.Protobuf.WellKnownTypes.Empty> __Method_SetTransferMode = new aelf::Method<global::Google.Protobuf.WellKnownTypes.BoolValue, global::Google.Protobuf.WellKnownTypes.Empty>(
@@ -84,31 +85,31 @@ namespace AElf.Contracts.ManagerList {
         __Marshaller_google_protobuf_BoolValue);
 
     static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::Google.Protobuf.WellKnownTypes.StringValue> __Method_TestMySystemContract = new aelf::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::Google.Protobuf.WellKnownTypes.StringValue>(
-        aelf::MethodType.View,
+        aelf::MethodType.Action,
         __ServiceName,
         "TestMySystemContract",
         __Marshaller_google_protobuf_Empty,
         __Marshaller_google_protobuf_StringValue);
 
-    static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.Empty> __Method_AddContractAddressToBlackList = new aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.Empty>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_AddContractAddressToBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
         aelf::MethodType.Action,
         __ServiceName,
         "AddContractAddressToBlackList",
-        __Marshaller_google_protobuf_StringValue,
+        __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
-    static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveContractAddressFromBlackList = new aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.Empty>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveContractAddressFromBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
         aelf::MethodType.Action,
         __ServiceName,
         "RemoveContractAddressFromBlackList",
-        __Marshaller_google_protobuf_StringValue,
+        __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
-    static readonly aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckContractAddressInBlackList = new aelf::Method<global::Google.Protobuf.WellKnownTypes.StringValue, global::Google.Protobuf.WellKnownTypes.BoolValue>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckContractAddressInBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue>(
         aelf::MethodType.View,
         __ServiceName,
         "CheckContractAddressInBlackList",
-        __Marshaller_google_protobuf_StringValue,
+        __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_BoolValue);
 
     #endregion
@@ -140,7 +141,7 @@ namespace AElf.Contracts.ManagerList {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.Empty SetSuperAdminAddress(global::Google.Protobuf.WellKnownTypes.StringValue input)
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty SetSuperAdminAddress(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
@@ -150,17 +151,17 @@ namespace AElf.Contracts.ManagerList {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.Empty AddManager(global::Google.Protobuf.WellKnownTypes.StringValue input)
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty AddManager(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.Empty RemoveManager(global::Google.Protobuf.WellKnownTypes.StringValue input)
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty RemoveManager(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.BoolValue CheckManager(global::Google.Protobuf.WellKnownTypes.StringValue input)
+      public virtual global::Google.Protobuf.WellKnownTypes.BoolValue CheckManager(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
@@ -180,17 +181,17 @@ namespace AElf.Contracts.ManagerList {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.Empty AddContractAddressToBlackList(global::Google.Protobuf.WellKnownTypes.StringValue input)
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty AddContractAddressToBlackList(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.Empty RemoveContractAddressFromBlackList(global::Google.Protobuf.WellKnownTypes.StringValue input)
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty RemoveContractAddressFromBlackList(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.BoolValue CheckContractAddressInBlackList(global::Google.Protobuf.WellKnownTypes.StringValue input)
+      public virtual global::Google.Protobuf.WellKnownTypes.BoolValue CheckContractAddressInBlackList(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
