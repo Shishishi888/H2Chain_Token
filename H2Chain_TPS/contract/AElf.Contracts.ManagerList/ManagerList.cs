@@ -253,6 +253,31 @@ namespace AElf.Contracts.ManagerList
         }        
         
         #endregion
+
+        #region UserBlackList
+
+        /**
+         * Add an user to the black list.
+         */ 
+        public override Empty AddUserToBlackList(Address address)
+        {    
+            // 1. validate the initialize method
+            Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
+
+            // 2. validate the sender's identity
+            bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
+            Assert(isSuperAdmin, "Invalid sender.");
+
+            // 3. add the contract address to the black list
+            State.UserBlackList[address] = new BoolValue
+            {
+                Value = true
+            };
+
+            return new Empty();
+        }
+
+        #endregion
         
         public override StringValue TestMySystemContract(Empty empty)
         {

@@ -111,6 +111,13 @@ namespace AElf.Contracts.ManagerList {
         __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_BoolValue);
 
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_AddUserToBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
+        aelf::MethodType.Action,
+        __ServiceName,
+        "AddUserToBlackList",
+        __Marshaller_aelf_Address,
+        __Marshaller_google_protobuf_Empty);
+
     #endregion
 
     #region Descriptors
@@ -191,6 +198,11 @@ namespace AElf.Contracts.ManagerList {
       public aelf::IMethodStub<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> CheckContractAddressInBlackList
       {
         get { return __factory.Create(__Method_CheckContractAddressInBlackList); }
+      }
+
+      public aelf::IMethodStub<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> AddUserToBlackList
+      {
+        get { return __factory.Create(__Method_AddUserToBlackList); }
       }
 
     }

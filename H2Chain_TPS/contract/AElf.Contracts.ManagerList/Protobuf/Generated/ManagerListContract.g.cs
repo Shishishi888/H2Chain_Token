@@ -27,7 +27,7 @@ namespace AElf.Contracts.ManagerList {
             "ChttYW5hZ2VyX2xpc3RfY29udHJhY3QucHJvdG8SE01hbmFnZXJMaXN0Q29u",
             "dHJhY3QaEmFlbGYvb3B0aW9ucy5wcm90bxoPYWVsZi9jb3JlLnByb3RvGhtn",
             "b29nbGUvcHJvdG9idWYvZW1wdHkucHJvdG8aHmdvb2dsZS9wcm90b2J1Zi93",
-            "cmFwcGVycy5wcm90bzKmBwoTTWFuYWdlckxpc3RDb250cmFjdBI+CgpJbml0",
+            "cmFwcGVycy5wcm90bzLlBwoTTWFuYWdlckxpc3RDb250cmFjdBI+CgpJbml0",
             "aWFsaXplEhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5GhYuZ29vZ2xlLnByb3Rv",
             "YnVmLkVtcHR5IgASPwoUU2V0U3VwZXJBZG1pbkFkZHJlc3MSDS5hZWxmLkFk",
             "ZHJlc3MaFi5nb29nbGUucHJvdG9idWYuRW1wdHkiABJUChdIYXNTZXRTdXBl",
@@ -47,9 +47,10 @@ namespace AElf.Contracts.ManagerList {
             "QmxhY2tMaXN0Eg0uYWVsZi5BZGRyZXNzGhYuZ29vZ2xlLnByb3RvYnVmLkVt",
             "cHR5IgASUwofQ2hlY2tDb250cmFjdEFkZHJlc3NJbkJsYWNrTGlzdBINLmFl",
             "bGYuQWRkcmVzcxoaLmdvb2dsZS5wcm90b2J1Zi5Cb29sVmFsdWUiBYiJ9wEB",
-            "GjCyzPYBK0FFbGYuQ29udHJhY3RzLk1hbmFnZXJMaXN0Lk1hbmFnZXJMaXN0",
-            "U3RhdGVCHaoCGkFFbGYuQ29udHJhY3RzLk1hbmFnZXJMaXN0UABQAWIGcHJv",
-            "dG8z"));
+            "Ej0KEkFkZFVzZXJUb0JsYWNrTGlzdBINLmFlbGYuQWRkcmVzcxoWLmdvb2ds",
+            "ZS5wcm90b2J1Zi5FbXB0eSIAGjCyzPYBK0FFbGYuQ29udHJhY3RzLk1hbmFn",
+            "ZXJMaXN0Lk1hbmFnZXJMaXN0U3RhdGVCHaoCGkFFbGYuQ29udHJhY3RzLk1h",
+            "bmFnZXJMaXN0UABQAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::AElf.OptionsReflection.Descriptor, global::AElf.Types.CoreReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, null));
