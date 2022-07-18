@@ -118,6 +118,20 @@ namespace AElf.Contracts.ManagerList {
         __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveUserFromBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
+        aelf::MethodType.Action,
+        __ServiceName,
+        "RemoveUserFromBlackList",
+        __Marshaller_aelf_Address,
+        __Marshaller_google_protobuf_Empty);
+
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckUserInBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue>(
+        aelf::MethodType.View,
+        __ServiceName,
+        "CheckUserInBlackList",
+        __Marshaller_aelf_Address,
+        __Marshaller_google_protobuf_BoolValue);
+
     #endregion
 
     #region Descriptors
@@ -203,6 +217,16 @@ namespace AElf.Contracts.ManagerList {
       public aelf::IMethodStub<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> AddUserToBlackList
       {
         get { return __factory.Create(__Method_AddUserToBlackList); }
+      }
+
+      public aelf::IMethodStub<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> RemoveUserFromBlackList
+      {
+        get { return __factory.Create(__Method_RemoveUserFromBlackList); }
+      }
+
+      public aelf::IMethodStub<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> CheckUserInBlackList
+      {
+        get { return __factory.Create(__Method_CheckUserInBlackList); }
       }
 
     }

@@ -59,5 +59,12 @@ service ManagerListContract {
 
     rpc AddUserToBlackList(aelf.Address) returns (google.protobuf.Empty) {
     }
+
+    rpc RemoveUserFromBlackList(aelf.Address) returns (google.protobuf.Empty) {
+    }
+    
+    rpc CheckUserInBlackList(aelf.Address) returns (google.protobuf.BoolValue) {
+            option (aelf.is_view) = true;
+    }   
 }
 

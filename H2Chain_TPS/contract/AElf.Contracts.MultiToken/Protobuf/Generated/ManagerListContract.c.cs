@@ -118,6 +118,20 @@ namespace AElf.Contracts.ManagerList {
         __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveUserFromBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
+        aelf::MethodType.Action,
+        __ServiceName,
+        "RemoveUserFromBlackList",
+        __Marshaller_aelf_Address,
+        __Marshaller_google_protobuf_Empty);
+
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckUserInBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue>(
+        aelf::MethodType.View,
+        __ServiceName,
+        "CheckUserInBlackList",
+        __Marshaller_aelf_Address,
+        __Marshaller_google_protobuf_BoolValue);
+
     #endregion
 
     #region Descriptors
@@ -153,6 +167,8 @@ namespace AElf.Contracts.ManagerList {
       internal global::AElf.Sdk.CSharp.State.MethodReference<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> RemoveContractAddressFromBlackList { get; set; }
       internal global::AElf.Sdk.CSharp.State.MethodReference<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> CheckContractAddressInBlackList { get; set; }
       internal global::AElf.Sdk.CSharp.State.MethodReference<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> AddUserToBlackList { get; set; }
+      internal global::AElf.Sdk.CSharp.State.MethodReference<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> RemoveUserFromBlackList { get; set; }
+      internal global::AElf.Sdk.CSharp.State.MethodReference<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> CheckUserInBlackList { get; set; }
     }
   }
 }

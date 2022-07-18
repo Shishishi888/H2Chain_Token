@@ -119,6 +119,20 @@ namespace AElf.Contracts.ManagerList {
         __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveUserFromBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
+        aelf::MethodType.Action,
+        __ServiceName,
+        "RemoveUserFromBlackList",
+        __Marshaller_aelf_Address,
+        __Marshaller_google_protobuf_Empty);
+
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckUserInBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue>(
+        aelf::MethodType.View,
+        __ServiceName,
+        "CheckUserInBlackList",
+        __Marshaller_aelf_Address,
+        __Marshaller_google_protobuf_BoolValue);
+
     #endregion
 
     #region Descriptors
@@ -208,6 +222,16 @@ namespace AElf.Contracts.ManagerList {
         throw new global::System.NotImplementedException();
       }
 
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty RemoveUserFromBlackList(global::AElf.Types.Address input)
+      {
+        throw new global::System.NotImplementedException();
+      }
+
+      public virtual global::Google.Protobuf.WellKnownTypes.BoolValue CheckUserInBlackList(global::AElf.Types.Address input)
+      {
+        throw new global::System.NotImplementedException();
+      }
+
     }
 
     public static aelf::ServerServiceDefinition BindService(ManagerListContractImplBase serviceImpl)
@@ -226,7 +250,9 @@ namespace AElf.Contracts.ManagerList {
           .AddMethod(__Method_AddContractAddressToBlackList, serviceImpl.AddContractAddressToBlackList)
           .AddMethod(__Method_RemoveContractAddressFromBlackList, serviceImpl.RemoveContractAddressFromBlackList)
           .AddMethod(__Method_CheckContractAddressInBlackList, serviceImpl.CheckContractAddressInBlackList)
-          .AddMethod(__Method_AddUserToBlackList, serviceImpl.AddUserToBlackList).Build();
+          .AddMethod(__Method_AddUserToBlackList, serviceImpl.AddUserToBlackList)
+          .AddMethod(__Method_RemoveUserFromBlackList, serviceImpl.RemoveUserFromBlackList)
+          .AddMethod(__Method_CheckUserInBlackList, serviceImpl.CheckUserInBlackList).Build();
     }
 
   }

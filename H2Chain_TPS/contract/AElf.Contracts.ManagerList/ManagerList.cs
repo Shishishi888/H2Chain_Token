@@ -268,7 +268,7 @@ namespace AElf.Contracts.ManagerList
             bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
 
-            // 3. add the contract address to the black list
+            // 3. add the user address to the black list
             State.UserBlackList[address] = new BoolValue
             {
                 Value = true
@@ -276,6 +276,51 @@ namespace AElf.Contracts.ManagerList
 
             return new Empty();
         }
+
+/**
+         * Remove an user from the black list.
+         */
+        public override Empty RemoveUserFromBlackList(Address address)
+        {   
+            // 1. validate initialize method
+            Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
+            
+            // 2. validate sender
+            bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
+            Assert(isSuperAdmin, "Invalid sender.");
+            
+            // 3. remove the user address from black list
+            if (State.UserBlackList[address] == null)
+            {
+                // do nothing
+            }
+            else
+            {
+                State.UserBlackList[address] = new BoolValue
+                {
+                    Value = false
+                };
+            }
+            return new Empty();
+        }
+
+        /**
+         * Check if the user is in the black list.
+         */
+        public override BoolValue CheckUserInBlackList(Address address)
+        {
+            if (State.UserBlackList[address] != null && State.UserBlackList[address].Value == true)
+            {
+                return  new BoolValue { Value = true };
+            }
+            // if (State.Manager_Base[address] == null || State.Manager_Base[address].Value == false)
+            else
+            {
+               return  new BoolValue { Value = false };
+            }
+        }        
+
+
 
         #endregion
         
