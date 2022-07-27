@@ -47,24 +47,31 @@ service ManagerListContract {
         // option (aelf.is_view) = true;
     }
     
-    rpc AddContractAddressToBlackList(aelf.Address) returns (google.protobuf.Empty) {
+    rpc AddToContractBlackList(aelf.Address) returns (google.protobuf.Empty) {
     }
     
-    rpc RemoveContractAddressFromBlackList(aelf.Address) returns (google.protobuf.Empty) {
+    rpc RemoveFromContractBlackList(aelf.Address) returns (google.protobuf.Empty) {
     }
     
-    rpc CheckContractAddressInBlackList(aelf.Address) returns (google.protobuf.BoolValue) {
+    rpc CheckInContractBlackList(aelf.Address) returns (google.protobuf.BoolValue) {
             option (aelf.is_view) = true;
     }
 
-    rpc AddUserToBlackList(aelf.Address) returns (google.protobuf.Empty) {
+    rpc AddToAccountBlackList(aelf.Address) returns (google.protobuf.Empty) {
     }
 
-    rpc RemoveUserFromBlackList(aelf.Address) returns (google.protobuf.Empty) {
+    rpc RemoveFromAccountBlackList(aelf.Address) returns (google.protobuf.Empty) {
     }
     
-    rpc CheckUserInBlackList(aelf.Address) returns (google.protobuf.BoolValue) {
+    rpc CheckInAccountBlackList(aelf.Address) returns (google.protobuf.BoolValue) {
             option (aelf.is_view) = true;
     }   
+
+    rpc AddToDestroyedContractList(aelf.Address) returns (google.protobuf.Empty) {
+    }
+    
+    rpc CheckInDestroyedContractList(aelf.Address) returns (google.protobuf.BoolValue) {
+            option (aelf.is_view) = true;
+    }      
 }
 

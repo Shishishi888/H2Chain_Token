@@ -59,7 +59,7 @@ namespace AElf.Contracts.ManagerList
             // 1. Write the super admin address into state.
             State.SuperAdminAddress.Value = superAdminAddress;
             
-            // 2. Add super admin address to manager list.
+            // 2. Add the super admin address to manager list.
             State.ManagerList[superAdminAddress] = new BoolValue { Value = true };
 
             // 3. Lock the SetSuperAdminAddress method.
@@ -129,7 +129,7 @@ namespace AElf.Contracts.ManagerList
         }
 
         /**
-         * Check if a address is in ManagerList
+         * Check if the address is in ManagerList
          */
         public override BoolValue CheckManager(Address address)
         {            
@@ -186,12 +186,12 @@ namespace AElf.Contracts.ManagerList
         
         #endregion
 
-        #region ContractAdressBlackList
+        #region ContractBlackList
 
         /**
          * Add the contract address to the black list.
          */ 
-        public override Empty AddContractAddressToBlackList(Address address)
+        public override Empty AddToContractBlackList(Address address)
         {    
             // 1. validate the initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
@@ -201,7 +201,7 @@ namespace AElf.Contracts.ManagerList
             Assert(isSuperAdmin, "Invalid sender.");
 
             // 3. add the contract address to the black list
-            State.ContractAddressBlackList[address] = new BoolValue
+            State.ContractBlackList[address] = new BoolValue
             {
                 Value = true
             };
@@ -212,23 +212,23 @@ namespace AElf.Contracts.ManagerList
         /**
          * Remove the contract address from the black list.
          */
-        public override Empty RemoveContractAddressFromBlackList(Address address)
+        public override Empty RemoveFromContractBlackList(Address address)
         {   
             // 1. validate initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
             
-            // 2. validate sender
+            // 2. validate the sender's identity
             bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
             
             // 3. remove the contract address from black list
-            if (State.ContractAddressBlackList[address] == null)
+            if (State.ContractBlackList[address] == null)
             {
                 // do nothing
             }
             else
             {
-                State.ContractAddressBlackList[address] = new BoolValue
+                State.ContractBlackList[address] = new BoolValue
                 {
                     Value = false
                 };
@@ -239,9 +239,9 @@ namespace AElf.Contracts.ManagerList
         /**
          * Check if the contract address is in the black list.
          */
-        public override BoolValue CheckContractAddressInBlackList(Address address)
+        public override BoolValue CheckInContractBlackList(Address address)
         {
-            if (State.ContractAddressBlackList[address] != null && State.ContractAddressBlackList[address].Value == true)
+            if (State.ContractBlackList[address] != null && State.ContractBlackList[address].Value == true)
             {
                 return  new BoolValue { Value = true };
             }
@@ -254,12 +254,12 @@ namespace AElf.Contracts.ManagerList
         
         #endregion
 
-        #region UserBlackList
+        #region AccountBlackList
 
         /**
-         * Add an user to the black list.
+         * Add the user to the Account BlackList.
          */ 
-        public override Empty AddUserToBlackList(Address address)
+        public override Empty AddToAccountBlackList(Address address)
         {    
             // 1. validate the initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
@@ -269,7 +269,7 @@ namespace AElf.Contracts.ManagerList
             Assert(isSuperAdmin, "Invalid sender.");
 
             // 3. add the user address to the black list
-            State.UserBlackList[address] = new BoolValue
+            State.AccountBlackList[address] = new BoolValue
             {
                 Value = true
             };
@@ -277,26 +277,26 @@ namespace AElf.Contracts.ManagerList
             return new Empty();
         }
 
-/**
-         * Remove an user from the black list.
+        /**
+         * Remove the user from the  Account BlackList.
          */
-        public override Empty RemoveUserFromBlackList(Address address)
+        public override Empty RemoveFromAccountBlackList(Address address)
         {   
             // 1. validate initialize method
             Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
             
-            // 2. validate sender
+            // 2. validate sender' identity
             bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
             Assert(isSuperAdmin, "Invalid sender.");
             
             // 3. remove the user address from black list
-            if (State.UserBlackList[address] == null)
+            if (State.AccountBlackList[address] == null)
             {
                 // do nothing
             }
             else
             {
-                State.UserBlackList[address] = new BoolValue
+                State.AccountBlackList[address] = new BoolValue
                 {
                     Value = false
                 };
@@ -305,11 +305,11 @@ namespace AElf.Contracts.ManagerList
         }
 
         /**
-         * Check if the user is in the black list.
+         * Check if the user is in the  Account BlackList.
          */
-        public override BoolValue CheckUserInBlackList(Address address)
+        public override BoolValue CheckInAccountBlackList(Address address)
         {
-            if (State.UserBlackList[address] != null && State.UserBlackList[address].Value == true)
+            if (State.AccountBlackList[address] != null && State.AccountBlackList[address].Value == true)
             {
                 return  new BoolValue { Value = true };
             }
@@ -323,7 +323,51 @@ namespace AElf.Contracts.ManagerList
 
 
         #endregion
-        
+
+        #region DestroyedContractList
+
+        /**
+         * Add the user to the Destroyed ContractList.
+         */ 
+        public override Empty AddToDestroyedContractList(Address address)
+        {    
+            // 1. validate the initialize method
+            Assert(State.SuperAdminAddressLock.Value, "SetSuperAdminAddress method has not been called yet.");
+
+            // 2. validate the sender's identity
+            bool isSuperAdmin = Context.Sender == State.SuperAdminAddress.Value;
+            Assert(isSuperAdmin, "Invalid sender.");
+
+            // 3. add the user address to the Destroyed ContractList
+            State.DestroyedContractList[address] = new BoolValue
+            {
+                Value = true
+            };
+
+            return new Empty();
+        }
+
+        /**
+         * Check if the user is in the Destroyed ContractList.
+         */
+        public override BoolValue CheckInDestroyedContractList(Address address)
+        {
+            if (State.DestroyedContractList[address] != null && State.DestroyedContractList[address].Value == true)
+            {
+                return  new BoolValue { Value = true };
+            }
+            // if (State.Manager_Base[address] == null || State.Manager_Base[address].Value == false)
+            else
+            {
+               return  new BoolValue { Value = false };
+            }
+        }        
+
+
+
+        #endregion
+
+
         public override StringValue TestMySystemContract(Empty empty)
         {
 

@@ -91,45 +91,59 @@ namespace AElf.Contracts.ManagerList {
         __Marshaller_google_protobuf_Empty,
         __Marshaller_google_protobuf_StringValue);
 
-    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_AddContractAddressToBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_AddToContractBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
         aelf::MethodType.Action,
         __ServiceName,
-        "AddContractAddressToBlackList",
+        "AddToContractBlackList",
         __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
-    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveContractAddressFromBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveFromContractBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
         aelf::MethodType.Action,
         __ServiceName,
-        "RemoveContractAddressFromBlackList",
+        "RemoveFromContractBlackList",
         __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
-    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckContractAddressInBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckInContractBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue>(
         aelf::MethodType.View,
         __ServiceName,
-        "CheckContractAddressInBlackList",
+        "CheckInContractBlackList",
         __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_BoolValue);
 
-    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_AddUserToBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_AddToAccountBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
         aelf::MethodType.Action,
         __ServiceName,
-        "AddUserToBlackList",
+        "AddToAccountBlackList",
         __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
-    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveUserFromBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_RemoveFromAccountBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
         aelf::MethodType.Action,
         __ServiceName,
-        "RemoveUserFromBlackList",
+        "RemoveFromAccountBlackList",
         __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_Empty);
 
-    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckUserInBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue>(
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckInAccountBlackList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue>(
         aelf::MethodType.View,
         __ServiceName,
-        "CheckUserInBlackList",
+        "CheckInAccountBlackList",
+        __Marshaller_aelf_Address,
+        __Marshaller_google_protobuf_BoolValue);
+
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty> __Method_AddToDestroyedContractList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.Empty>(
+        aelf::MethodType.Action,
+        __ServiceName,
+        "AddToDestroyedContractList",
+        __Marshaller_aelf_Address,
+        __Marshaller_google_protobuf_Empty);
+
+    static readonly aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue> __Method_CheckInDestroyedContractList = new aelf::Method<global::AElf.Types.Address, global::Google.Protobuf.WellKnownTypes.BoolValue>(
+        aelf::MethodType.View,
+        __ServiceName,
+        "CheckInDestroyedContractList",
         __Marshaller_aelf_Address,
         __Marshaller_google_protobuf_BoolValue);
 
@@ -202,32 +216,42 @@ namespace AElf.Contracts.ManagerList {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.Empty AddContractAddressToBlackList(global::AElf.Types.Address input)
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty AddToContractBlackList(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.Empty RemoveContractAddressFromBlackList(global::AElf.Types.Address input)
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty RemoveFromContractBlackList(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.BoolValue CheckContractAddressInBlackList(global::AElf.Types.Address input)
+      public virtual global::Google.Protobuf.WellKnownTypes.BoolValue CheckInContractBlackList(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.Empty AddUserToBlackList(global::AElf.Types.Address input)
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty AddToAccountBlackList(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.Empty RemoveUserFromBlackList(global::AElf.Types.Address input)
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty RemoveFromAccountBlackList(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
 
-      public virtual global::Google.Protobuf.WellKnownTypes.BoolValue CheckUserInBlackList(global::AElf.Types.Address input)
+      public virtual global::Google.Protobuf.WellKnownTypes.BoolValue CheckInAccountBlackList(global::AElf.Types.Address input)
+      {
+        throw new global::System.NotImplementedException();
+      }
+
+      public virtual global::Google.Protobuf.WellKnownTypes.Empty AddToDestroyedContractList(global::AElf.Types.Address input)
+      {
+        throw new global::System.NotImplementedException();
+      }
+
+      public virtual global::Google.Protobuf.WellKnownTypes.BoolValue CheckInDestroyedContractList(global::AElf.Types.Address input)
       {
         throw new global::System.NotImplementedException();
       }
@@ -247,12 +271,14 @@ namespace AElf.Contracts.ManagerList {
           .AddMethod(__Method_SetTransferMode, serviceImpl.SetTransferMode)
           .AddMethod(__Method_GetTransferMode, serviceImpl.GetTransferMode)
           .AddMethod(__Method_TestMySystemContract, serviceImpl.TestMySystemContract)
-          .AddMethod(__Method_AddContractAddressToBlackList, serviceImpl.AddContractAddressToBlackList)
-          .AddMethod(__Method_RemoveContractAddressFromBlackList, serviceImpl.RemoveContractAddressFromBlackList)
-          .AddMethod(__Method_CheckContractAddressInBlackList, serviceImpl.CheckContractAddressInBlackList)
-          .AddMethod(__Method_AddUserToBlackList, serviceImpl.AddUserToBlackList)
-          .AddMethod(__Method_RemoveUserFromBlackList, serviceImpl.RemoveUserFromBlackList)
-          .AddMethod(__Method_CheckUserInBlackList, serviceImpl.CheckUserInBlackList).Build();
+          .AddMethod(__Method_AddToContractBlackList, serviceImpl.AddToContractBlackList)
+          .AddMethod(__Method_RemoveFromContractBlackList, serviceImpl.RemoveFromContractBlackList)
+          .AddMethod(__Method_CheckInContractBlackList, serviceImpl.CheckInContractBlackList)
+          .AddMethod(__Method_AddToAccountBlackList, serviceImpl.AddToAccountBlackList)
+          .AddMethod(__Method_RemoveFromAccountBlackList, serviceImpl.RemoveFromAccountBlackList)
+          .AddMethod(__Method_CheckInAccountBlackList, serviceImpl.CheckInAccountBlackList)
+          .AddMethod(__Method_AddToDestroyedContractList, serviceImpl.AddToDestroyedContractList)
+          .AddMethod(__Method_CheckInDestroyedContractList, serviceImpl.CheckInDestroyedContractList).Build();
     }
 
   }
